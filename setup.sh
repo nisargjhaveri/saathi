@@ -12,6 +12,7 @@ _install() {
 		then
 			echo "${YELLOW}Re-run as sudo to setup this script${NC}"
 		fi
+		apt-get install lamp-server^ # install the whole goddammed lamp stack 
 	fi
 }
 
@@ -63,6 +64,9 @@ case "$1" in
 		;;
 	status)
 		_check
+		;;
+	install)
+		_install
 		;;
 	restart|reload)
 		_stop
