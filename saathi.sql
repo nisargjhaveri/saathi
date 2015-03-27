@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `missing_persons` (
 -- Table structure for table `organisatios`
 --
 
-CREATE TABLE IF NOT EXISTS `organisatios` (
+CREATE TABLE IF NOT EXISTS `organisations` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `home_country` varchar(255) NOT NULL,
