@@ -1,5 +1,5 @@
 <?php
-$default_controller = 'hello';
+$default_controller = 'home';
 $default_method = 'index';
 
 $_base_url = '';
