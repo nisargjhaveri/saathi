@@ -149,10 +149,14 @@
 
                     <div class="btn-group btn-group-justified" role="group" style="padding: 20px; border: 10px">
                         <div class="btn-group" role="group">
-                            <a href="#"><button type="button" class="btn btn-primary">Organisations</button></a>
+                            <a href="#">
+                                <button type="button" class="btn btn-primary">Organisations</button>
+                            </a>
                         </div>
                         <div class="btn-group" role="group">
-                            <a href="#"><button type="button" class="btn btn-primary">Assets</button></a>
+                            <a href="#">
+                                <button type="button" class="btn btn-primary">Assets</button>
+                            </a>
                         </div>
                         <div class="btn-group" role="group">
                             <a href="#">
@@ -160,10 +164,14 @@
                             </a>
                         </div>
                         <div class="btn-group" role="group">
-                            <a href="#"><button type="button" class="btn btn-primary">Camps</button></a>
+                            <a href="#">
+                                <button type="button" class="btn btn-primary">Camps</button>
+                            </a>
                         </div>
                         <div class="btn-group" role="group">
-                            <a href="<?php echo base_url(); ?>missing/"><button type="button" class="btn btn-primary">Missing People</button></a>
+                            <a href="<?php echo base_url(); ?>missing/">
+                                <button type="button" class="btn btn-primary">Missing People</button>
+                            </a>
                         </div>
                     </div>
                 </div>
