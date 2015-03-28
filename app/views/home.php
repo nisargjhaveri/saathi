@@ -97,7 +97,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>missing/">
                     Missing People
                 </a>
             </li>
@@ -149,19 +149,21 @@
 
                     <div class="btn-group btn-group-justified" role="group" style="padding: 20px; border: 10px">
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary">Organisations</button>
+                            <a href="#"><button type="button" class="btn btn-primary">Organisations</button></a>
                         </div>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary">Assets</button>
+                            <a href="#"><button type="button" class="btn btn-primary">Assets</button></a>
                         </div>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary">Requests</button>
+                            <a href="#">
+                                <button type="button" class="btn btn-primary">Requests</button>
+                            </a>
                         </div>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary">Camps</button>
+                            <a href="#"><button type="button" class="btn btn-primary">Camps</button></a>
                         </div>
                         <div class="btn-group" role="group">
-                            <button type="button" class="btn btn-primary">Missing People</button>
+                            <a href="<?php echo base_url(); ?>missing/"><button type="button" class="btn btn-primary">Missing People</button></a>
                         </div>
                     </div>
                 </div>
