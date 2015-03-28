@@ -1,6 +1,6 @@
 <?php
 
-class hello extends Controller {
+class home extends Controller {
 
     function index() {
 
@@ -8,7 +8,7 @@ class hello extends Controller {
 
         $name = $this->hello_model->whoami();
 
-        $this->load_view("hello", [
+        $this->load_view("home", [
             "from" => $name
         ]);
     }
