@@ -8,9 +8,6 @@
     <link href="<?php echo base_url(); ?>static/css/sidebar.css" rel="stylesheet" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>static/js/bootstrap.js"></script>
-    <style type="text/css">
-
-    </style>
 
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
@@ -73,8 +70,20 @@
         <ul class="sidebar-nav">
 
             <li>
+                <a href="<?php echo base_url(); ?>missing/">
+                    Missing People
+                </a>
+            </li>
+
+            <li>
                 <a href="#">
                     Organisations
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                    Camps
                 </a>
             </li>
 
@@ -87,18 +96,6 @@
             <li>
                 <a href="#">
                     Requests
-                </a>
-            </li>
-
-            <li>
-                <a href="#">
-                    Camps
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo base_url(); ?>missing/">
-                    Missing People
                 </a>
             </li>
 
@@ -149,8 +146,18 @@
 
                     <div class="btn-group btn-group-justified" role="group" style="padding: 20px; border: 10px">
                         <div class="btn-group" role="group">
+                            <a href="<?php echo base_url(); ?>missing/">
+                                <button type="button" class="btn btn-primary">Missing People</button>
+                            </a>
+                        </div>
+                        <div class="btn-group" role="group">
                             <a href="#">
                                 <button type="button" class="btn btn-primary">Organisations</button>
+                            </a>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a href="#">
+                                <button type="button" class="btn btn-primary">Camps</button>
                             </a>
                         </div>
                         <div class="btn-group" role="group">
@@ -161,16 +168,6 @@
                         <div class="btn-group" role="group">
                             <a href="#">
                                 <button type="button" class="btn btn-primary">Requests</button>
-                            </a>
-                        </div>
-                        <div class="btn-group" role="group">
-                            <a href="#">
-                                <button type="button" class="btn btn-primary">Camps</button>
-                            </a>
-                        </div>
-                        <div class="btn-group" role="group">
-                            <a href="<?php echo base_url(); ?>missing/">
-                                <button type="button" class="btn btn-primary">Missing People</button>
                             </a>
                         </div>
                     </div>
