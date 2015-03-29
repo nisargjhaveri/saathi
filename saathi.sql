@@ -32,7 +32,8 @@ CREATE TABLE IF NOT EXISTS `assets` (
   `description` text NOT NULL,
   `name` varchar(255) NOT NULL,
   `supplier_id` int(11) NOT NULL,
-  `date` date NOT NULL
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -49,7 +50,8 @@ CREATE TABLE IF NOT EXISTS `camps` (
   `population` text NOT NULL,
   `volunteers` text NOT NULL,
   `status` varchar(255) NOT NULL,
-  `contact_id` int(11) NOT NULL
+  `contact_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -62,7 +64,8 @@ CREATE TABLE IF NOT EXISTS `contact_details` (
   `id` int(11) NOT NULL,
   `phone_no` varchar(15) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `mailing_list` varchar(255) NOT NULL
+  `mailing_list` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -81,13 +84,14 @@ CREATE TABLE IF NOT EXISTS `missing_persons` (
   `weight` varchar(255) NOT NULL,
   `last_seen` text NOT NULL,
   `status` text NOT NULL,
-  `contact_id` int(11) NOT NULL
+  `contact_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `organisatios`
+-- Table structure for table `organisations`
 --
 
 CREATE TABLE IF NOT EXISTS `organisations` (
@@ -97,7 +101,8 @@ CREATE TABLE IF NOT EXISTS `organisations` (
   `founded` varchar(255) NOT NULL,
   `logo` longblob NOT NULL,
   `description` text NOT NULL,
-  `contact_id` int(11) NOT NULL
+  `contact_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -113,7 +118,8 @@ CREATE TABLE IF NOT EXISTS `persons` (
   `gender` char(1) NOT NULL,
   `dob` date NOT NULL,
   `photo` longblob NOT NULL,
-  `contact_id` int(11) NOT NULL
+  `contact_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -127,66 +133,9 @@ CREATE TABLE IF NOT EXISTS `requests` (
   `organisation_id` int(11) NOT NULL,
   `asset_id` int(11) NOT NULL,
   `date` date NOT NULL,
-  `priority` varchar(255) NOT NULL
+  `priority` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `assets`
---
-ALTER TABLE `assets`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `organisation_id` (`organisation_id`),
-  ADD KEY `supplier_id` (`supplier_id`);
-
---
--- Indexes for table `camps`
---
-ALTER TABLE `camps`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `contact_id` (`contact_id`),
-  ADD KEY `camp_head` (`camp_head`),
-  ADD KEY `organisation_id` (`organisation_id`);
-
---
--- Indexes for table `contact_details`
---
-ALTER TABLE `contact_details`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `missing_persons`
---
-ALTER TABLE `missing_persons`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `contact_id` (`contact_id`),
-  ADD KEY `person_id` (`person_id`),
-  ADD KEY `person_id_2` (`person_id`);
-
---
--- Indexes for table `organisatios`
---
-ALTER TABLE `organisatios`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `contact_id` (`contact_id`);
-
---
--- Indexes for table `persons`
---
-ALTER TABLE `persons`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `contact_id` (`contact_id`);
-
---
--- Indexes for table `requests`
---
-ALTER TABLE `requests`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `organisation_id` (`organisation_id`),
-  ADD KEY `asset_id` (`asset_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -213,9 +162,9 @@ ALTER TABLE `contact_details`
 ALTER TABLE `missing_persons`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `organisatios`
+-- AUTO_INCREMENT for table `organisations`
 --
-ALTER TABLE `organisatios`
+ALTER TABLE `organisations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `persons`
@@ -235,13 +184,14 @@ ALTER TABLE `requests`
 -- Constraints for table `assets`
 --
 ALTER TABLE `assets`
+  ADD CONSTRAINT `assets_ibfk_2` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `assets_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `contact_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `camps`
 --
 ALTER TABLE `camps`
-  ADD CONSTRAINT `camps_ibfk_3` FOREIGN KEY (`organisation_id`) REFERENCES `organisatios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `camps_ibfk_3` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `camps_ibfk_1` FOREIGN KEY (`camp_head`) REFERENCES `persons` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `camps_ibfk_2` FOREIGN KEY (`contact_id`) REFERENCES `contact_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -253,9 +203,9 @@ ALTER TABLE `missing_persons`
   ADD CONSTRAINT `missing_persons_ibfk_1` FOREIGN KEY (`contact_id`) REFERENCES `contact_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `organisatios`
+-- Constraints for table `organisations`
 --
-ALTER TABLE `organisatios`
+ALTER TABLE `organisations`
   ADD CONSTRAINT `organisatios_ibfk_1` FOREIGN KEY (`contact_id`) REFERENCES `contact_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -268,7 +218,7 @@ ALTER TABLE `persons`
 -- Constraints for table `requests`
 --
 ALTER TABLE `requests`
-  ADD CONSTRAINT `requests_ibfk_2` FOREIGN KEY (`organisation_id`) REFERENCES `organisatios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `requests_ibfk_2` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `requests_ibfk_1` FOREIGN KEY (`asset_id`) REFERENCES `assets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
