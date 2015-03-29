@@ -27,5 +27,10 @@ Now, open your application and you should see a simple page with _**Project Saat
 ## Database Setup
 Once your done with the above, you need to create your database. For this, use the _**saathi.sql**_ file. Use the import feature of **phpMyAdmin** for this.
 
+## Other dependencies
+The project requires [`mysqlnd`](http://php.net/manual/en/book.mysqlnd.php) driver for some functinalities. You can install it with following command in Ubuntu.
+
+    sudo apt-get install php5-mysqlnd
+
 ## Issues
 If you come across any problems, please mention it on the issues page. The concerned people will try to help you as soon as possible.
