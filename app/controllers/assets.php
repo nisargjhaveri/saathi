@@ -25,12 +25,4 @@ class assets extends Controller {
         ));
     }
 
-    function list_data() {
-        $list = $this->assets_model->get_list();
-
-        $this->load_view('assets_list', array(
-            'list' => $list
-        ));
-    }
-
 }
