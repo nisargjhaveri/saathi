@@ -108,7 +108,7 @@
                 <div class="col-lg-9">
                     <div class="page-header">
                         <h1 style="text-align: center;">
-                            Report a Missing Person<br/>
+                            Search a Missing Person<br/>
                         </h1>
                         <br />
                         <form action="" method="POST">
@@ -120,12 +120,12 @@
                                     </div>
                                     <div class="panel-body" id="panelBody1">
                                         <label class="sr-only" for="fname">First name: </label>
-                                        <input id="fname" type="text" class="form-control" name="person[fname]" placeholder="Enter Your First Name" required /><br>
+                                        <input id="fname" type="text" class="form-control" name="person[fname]" placeholder="Enter the First Name" required /><br>
                                         <label class="sr-only" for="lname">Last name: </label>
-                                        <input type="text" class="form-control" placeholder="Enter your Last Name" id="lname" name="person[lname]" /><br>
+                                        <input type="text" class="form-control" placeholder="Enter the Last Name" id="lname" name="person[lname]" /><br>
                                         <label class="sr-only" for="gender">Gender: </label>
                                         <label class="sr-only" for="dob">Date of birth: </label>
-                                        <input type="date" placeholder="Enter your DOB" class="form-control" id="dob" type="date" name="person[dob]" /><br>
+                                        <input type="date" placeholder="Enter the DOB" class="form-control" id="dob" type="date" name="person[dob]" /><br>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>
                                                 <option class="dropdown-toggle" value="" disabled selected>Select gender</option>
@@ -145,9 +145,9 @@
                                     </div>
                                     <div class="panel-body" id="panelBody2">
                                         <label class="sr-only" for="phone_no">Phone number: </label>
-                                        <input placeholder="Enter your Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" /><br>
+                                        <input placeholder="Enter the Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" /><br>
                                         <label class="sr-only" for="email">Email: </label>
-                                        <input class="form-control" type="email" placeholder="Enter your Email" id="email" type="email" name="person_contact[email]" /><br>
+                                        <input class="form-control" type="email" placeholder="Enter the Email" id="email" type="email" name="person_contact[email]" /><br>
                                     </div>
                                 </div>
                             </fieldset>
