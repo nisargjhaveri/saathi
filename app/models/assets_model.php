@@ -39,18 +39,5 @@ class assets_model extends Model {
         }
         return true;
     }
-
-    function get_list() {
-        /*
-        $result = $this->DB->query("SELECT * FROM `contact_details`");
-        if ($result) {
-            $contact_list = $result->fetch_all(MYSQLI_ASSOC);
-            return $contact_list;
-        }
-        else {
-            return false;
-        }
-        */
-    }
-
+    
 }
