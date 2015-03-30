@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `assets` (
   `organisation_id` int(11) NOT NULL,
   `description` text NOT NULL,
   `name` varchar(255) NOT NULL,
-  `supplier_id` int(11) NOT NULL,
   `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -184,8 +183,7 @@ ALTER TABLE `requests`
 -- Constraints for table `assets`
 --
 ALTER TABLE `assets`
-  ADD CONSTRAINT `assets_ibfk_2` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `assets_ibfk_1` FOREIGN KEY (`supplier_id`) REFERENCES `contact_details` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `assets_ibfk_2` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `camps`
