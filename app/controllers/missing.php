@@ -27,4 +27,23 @@ class missing extends Controller {
         ));
     }
 
+    function search() {
+        $search_results = null;
+        if ( isset($_POST['search']) ) {
+            $search_results = $this->missing_model->search(
+                $_POST['person'],
+                $_POST['person_contact']
+            );
+        }
+
+        if ( $search_results !== null ){
+            $this->load_view('missing/search_results', array(
+                'results' => $search_results
+            ));
+        }
+        else {
+            $this->load_view('missing/search');
+        }
+    }
+
 }

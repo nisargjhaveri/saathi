@@ -100,4 +100,37 @@ class missing_model extends Model {
         return $this->DB->commit();
     }
 
+    function search($person, $person_contact) {
+        $search_results = $this->execute(
+            'SELECT
+                *
+            FROM
+                `persons` p
+                JOIN `contact_details` c ON p.contact_id = c.id
+                JOIN `missing_persons` m ON m.person_id = p.id
+            WHERE
+                p.fname LIKE ?
+                OR p.lname LIKE ?
+                OR p.gender = ?
+                OR p.dob = ?
+                OR c.phone_no LIKE ?
+                OR c.email LIKE ?',
+            'ssssss',
+            array(
+                &$person['fname'],
+                &$person['lname'],
+                &$person['gender'],
+                &$person['dob'],
+                &$person_contact['phone_no'],
+                &$person_contact['email']
+            )
+        );
+
+        if (!$search_results) {
+            return false;
+        }
+
+        return $search_results->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
