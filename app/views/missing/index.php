@@ -121,7 +121,7 @@
                                     <a style="color: #ffffff" href="report">Report a Missing Person</a>
                                 </div><br /><br />
                                 <div class="btn btn-primary">
-                                    <a style="color: #ffffff; float: right" href="#">Search in our Records</a>
+                                    <a style="color: #ffffff; float: right" href="search">Search in our Records</a>
                                 </div>
                             </div>
                         </div>
