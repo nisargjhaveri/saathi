@@ -28,10 +28,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `assets` (
   `id` int(11) NOT NULL,
-  `organisation_id` int(11) NOT NULL,
   `description` text NOT NULL,
   `name` varchar(255) NOT NULL,
-  `date` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -130,8 +128,10 @@ CREATE TABLE IF NOT EXISTS `persons` (
 CREATE TABLE IF NOT EXISTS `requests` (
   `id` int(11) NOT NULL,
   `organisation_id` int(11) NOT NULL,
+  `supplier_id` int(11) NOT NULL,
   `asset_id` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `request_date` date NOT NULL,
+  `fulfill_date` date NOT NULL,
   `priority` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -180,12 +180,6 @@ ALTER TABLE `requests`
 --
 
 --
--- Constraints for table `assets`
---
-ALTER TABLE `assets`
-  ADD CONSTRAINT `assets_ibfk_2` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
 -- Constraints for table `camps`
 --
 ALTER TABLE `camps`
@@ -216,6 +210,7 @@ ALTER TABLE `persons`
 -- Constraints for table `requests`
 --
 ALTER TABLE `requests`
+  ADD CONSTRAINT `requests_ibfk_3` FOREIGN KEY (`supplier_id`) REFERENCES `organisations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `requests_ibfk_2` FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `requests_ibfk_1` FOREIGN KEY (`asset_id`) REFERENCES `assets` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
