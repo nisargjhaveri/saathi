@@ -124,7 +124,7 @@
                             echo "<div class='panel panel-primary'>
                                     <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
                                         <b>Name: " . $person['fname'] . " " . $person['lname'] . "</b>
-                                        <div class='btn btn-info' style='float: right;'>Show More</div>
+                                        <div class='btn btn-info show' style='float: right;'>Show More</div>
                                     </div>";
                             echo "<div class='panel-body' style='display: none'>";
                             echo "<ul class='list-group'>";
@@ -158,9 +158,9 @@
         $("#wrapper").toggleClass("toggled");
     });
 
-    $("#show1").click(function(e) {
+    $(".show").click(function(e) {
         e.preventDefault();
-        $("#panelBody1").toggle("display");
+        $(this).closest('.panel').find('.panel-body').toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
     });
 </script>
