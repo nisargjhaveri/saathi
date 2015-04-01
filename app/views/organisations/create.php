@@ -130,19 +130,19 @@
                                         <div class="btn btn-info" id="show1" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body" id="panelBody1">
-                                        <label class="sr-only" for="name">Name of Organisation: </label>
+                                        <label for="name">Name of Organisation </label>
                                         <input class="form-control" placeholder="Enter Name of Organisation" id="name" name="org[name]" required /><br>
-                                        <label class="sr-only" for="home">Home Country: </label>
+                                        <label for="home">Home Country </label>
                                         <input class="form-control" placeholder="Enter Home Country" id="home" name="org[home]" required /><br>
-                                        <label class="sr-only" for="phone_no">Phone number: </label>
+                                        <label for="phone_no">Phone number </label>
                                         <input class="form-control" placeholder="Enter Phone Number" id="phone_no" name="contact[phone_no]" /><br>
-                                        <label class="sr-only" for="email">Email: </label>
+                                        <label for="email">Email </label>
                                         <input class="form-control" placeholder="Enter Email" id="email" type="email" name="contact[email]" /><br>
-                                        <label class="sr-only" for="mailing_list">Mailing list: </label>
+                                        <label for="mailing_list">Mailing list </label>
                                         <input class="form-control" placeholder="Enter Mailing List" id="mailing_list" type="email" name="contact[mailing_list]" /><br>
-                                        <label class="sr-only" for="desc">Description: </label><br>
+                                        <label for="desc">Description </label><br>
                                         <textarea class="form-control" placeholder="Enter Description" id="desc" name="org[desc]"></textarea><br>
-                                        <label class="sr-only" for="founded">Founded: </label>
+                                        <label for="founded">Founded </label>
                                         <input class="form-control" placeholder="Enter Year Founded" id="founded" name="org[founded]" required /><br>
                                     </div>
                             </fieldset>
