@@ -76,7 +76,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>organisations/">
                     Organisations
                 </a>
             </li>
@@ -131,13 +131,13 @@
                                         <div class="btn btn-info" id="show1" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body" id="panelBody1">
-                                        <label class="sr-only" for="fname">First name: </label>
-                                        <input id="fname" type="text" class="form-control" name="person[fname]" placeholder="Enter Your First Name" required /><br>
-                                        <label class="sr-only" for="lname">Last name: </label>
-                                        <input type="text" class="form-control" placeholder="Enter your Last Name" id="lname" name="person[lname]" required /><br>
-                                        <label class="sr-only" for="gender">Gender: </label>
-                                        <label class="sr-only" for="dob">Date of birth: </label>
+                                        <label for="fname">First name </label>
+                                        <input id="fname" type="text" class="form-control" name="person[fname]" placeholder="Enter First Name" required /><br>
+                                        <label for="lname">Last name </label>
+                                        <input type="text" class="form-control" placeholder="Enter Last Name" id="lname" name="person[lname]" required /><br>
+                                        <label for="dob">Date of birth </label>
                                         <input type="date" placeholder="Enter your DOB" class="form-control" id="dob" type="date" name="person[dob]" /><br>
+                                        <label class="sr-only" for="gender">Gender: </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>
                                                 <option class="dropdown-toggle" value="" disabled selected>Select gender</option>
@@ -156,11 +156,11 @@
                                         <div class="btn btn-info" id="show2" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body" id="panelBody2">
-                                        <label class="sr-only" for="phone_no">Phone number: </label>
-                                        <input placeholder="Enter your Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" /><br>
-                                        <label class="sr-only" for="email">Email: </label>
+                                        <label for="phone_no">Phone number </label>
+                                        <input placeholder="Enter Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" /><br>
+                                        <label for="email">Email: </label>
                                         <input class="form-control" type="email" placeholder="Enter your Email" id="email" type="email" name="person_contact[email]" /><br>
-                                        <label class="sr-only" for="mailing_list">Mailing list: </label>
+                                        <label for="mailing_list">Mailing list </label>
                                         <input class="form-control" placeholder="Enter mailing-list" id="mailing_list" type="email" name="person_contact[mailing_list]" /><br>
                                     </div>
                                 </div>
@@ -172,17 +172,17 @@
                                         <div class="btn btn-info" id="show3" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body" id="panelBody3">
-                                        <label class="sr-only" for="body_marks">Body marks: </label><br>
+                                        <label for="body_marks">Body marks </label><br>
                                         <textarea id="body_marks" class="form-control" placeholder="Enter Body Marks" name="person_detail[body_marks]"></textarea><br>
-                                        <label class="sr-only" for="height">Height: </label>
+                                        <label for="height">Height </label>
                                         <input id="height" placeholder="Enter Height" class="form-control" name="person_detail[height]" /><br>
-                                        <label class="sr-only" for="weight">Weight: </label>
+                                        <label for="weight">Weight </label>
                                         <input class="form-control" placeholder="Enter Weight" id="weight" name="person_detail[weight]" /><br>
-                                        <label class="sr-only" for="hair">Hair: </label>
-                                        <input id="hair" placeholder="Enter Hair Type/Color" class="form-control" name="person_detail[hair]" /><br>
-                                        <label class="sr-only" for="eye_color">Eye color: </label>
+                                        <label for="hair">Hair Style/Color </label>
+                                        <input id="hair" placeholder="Enter Hair Style/Color" class="form-control" name="person_detail[hair]" /><br>
+                                        <label for="eye_color">Eye color </label>
                                         <input id="eye_color" class="form-control" placeholder="Enter Eye color" name="person_detail[eye_color]" /><br>
-                                        <label class="sr-only" for="last_seen">Last seen (When, where, condition): </label><br>
+                                        <label for="last_seen">Last seen (When, where, condition) </label><br>
                                         <textarea id="last_seen" placeholder="Enter Last Seen Location" class="form-control" name="person_detail[last_seen]"></textarea><br>
                                     </div>
                                 </div>
@@ -194,11 +194,11 @@
                                         <div class="btn btn-info" id="show4" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body" id="panelBody4">
-                                        <label class="sr-only" for="w_phone_no">Phone number: </label>
+                                        <label for="w_phone_no">Phone number </label>
                                         <input id="w_phone_no" class="form-control" placeholder="Enter Phone Number" name="contact_whom[phone_no]" required /><br>
-                                        <label class="sr-only" for="w_email">Email: </label>
+                                        <label for="w_email">Email </label>
                                         <input id="w_email" placeholder="Enter Email" class="form-control" type="email" name="contact_whom[email]" required /><br>
-                                        <label class="sr-only" for="w_mailing_list">Mailing list: </label>
+                                        <label for="w_mailing_list">Mailing list </label>
                                         <input id="w_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="contact_whom[mailing_list]" /><br>
                                     </div>
                                 </div>
