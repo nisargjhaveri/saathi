@@ -31,4 +31,12 @@ class assets extends Controller {
             'assets_list' => $assets_list
         ));
     }
+
+    function list_json() {
+        $assets_list = false;
+
+        $assets_list = $this->assets_model->get_assets();
+
+        echo json_encode($assets_list);
+    }
 }

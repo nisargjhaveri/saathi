@@ -8,7 +8,9 @@
     <link href="<?php echo base_url(); ?>static/css/sidebar.css" rel="stylesheet" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>static/js/bootstrap.js"></script>
-
+    <script src="<?php echo base_url(); ?>static/js/vendor/typeahead.bundle.min.js"></script>
+    <script src="<?php echo base_url(); ?>static/js/autocomplete.js"></script>
+    <link href="<?php echo base_url(); ?>static/css/vendor/typeaheadjs.css" rel="stylesheet" media="screen">
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
     <div class="container-fluid">
@@ -133,6 +135,7 @@
 
                                     <div class="panel-body" id="panelBody">
                                         <label for="name">Asset Name </label>
+                                        <input class="hidden" id='name_id' name='name_id' required/><br>
                                         <input class="form-control" placeholder="Enter Asset Name" name='name' required/><br>
                                         <label for="name">Description </label>
                                         <input class="form-control" placeholder="Enter Description" name='description' /><br>
@@ -156,6 +159,13 @@
 
 <!-- Toggle Script -->
 <script>
+    $('.form-control[name="name"]').autocomplete(
+        '<?php echo base_url(); ?>assets/list_json',
+        'name',
+        $('#name_id'),
+        'id'
+    );
+
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
