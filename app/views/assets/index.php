@@ -107,30 +107,40 @@
                 <div class="col-lg-12">
                     <div class="page-header">
                         <h1 style="text-align: center;">
-                            Organisation List<br/>
+                            Assets<br/>
+                            <small>If you are in need of something, you are at the right place</small>
                         </h1>
                         <br /><br />
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
+                                <b>Want to Add or view the assets?</b>
+                                <div class="btn btn-info" id="show" style="float: right">Hide</div>
+                            </div>
 
-                        <?php
-                            foreach ($org_list as $list) {
-                                echo "<div class='panel panel-primary'>
-                                      <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
-                                        <b>Organisation Name: " . $list['name'] . "</b>
-                                        <div class='btn btn-info show' style='float: right;'>Show More</div>
-                                      </div>";
-                                echo "<div class='panel-body' id='panelBody1' style='display: none;'>";
-                                echo "<ul class='list-group'>";
-                                echo "<li class='list-group-item'><b> Organisation Name: </b>" . $list['name'] . " </li><li class='list-group-item'><b>Home Country:  </b>".$list['home_country']."</li><li class='list-group-item'><b>Contact Number: </b>".$list['phone_no']."</li><li class='list-group-item'><b>Email:  </b>".$list['email']."</li>";
-                                echo "<li class='list-group-item'><b>Mailing List: </b>" . $list['mailing_list']."</li><li class='list-group-item'><b>Description: </b>".$list['description']."</li><li class='list-group-item'><b>Year Founded: </b>".$list['founded']."</li>";
-                                echo "<hr></div></div>";
-                            }
-                        ?>
+                            <div class="panel-body" id="panelBody">
+                                <div class="btn btn-primary">
+                                    <a style="color: #ffffff" href="insert">Add an asset</a>
+                                </div><br /><br />
+                                <div class="btn btn-primary">
+                                    <a style="color: #ffffff" href="view">View Available Assets</a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted" style="text-align: center">
+            Developed By Team Saathi <br/>
+            Powered By <a href="https://github.com/nisargjhaveri/saathi">Saathi</a>
+        </p>
+    </div>
+</footer>
 
 <!-- Toggle Script -->
 <script>
@@ -139,9 +149,9 @@
         $("#wrapper").toggleClass("toggled");
     });
 
-    $(".show").click(function(e) {
+    $("#show").click(function(e) {
         e.preventDefault();
-        $(this).closest('.panel').find('.panel-body').toggle("display");
+        $("#panelBody").toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
     });
 </script>

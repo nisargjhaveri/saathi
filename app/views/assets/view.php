@@ -107,25 +107,25 @@
                 <div class="col-lg-12">
                     <div class="page-header">
                         <h1 style="text-align: center;">
-                            Organisation List<br/>
+                            Assets Available<br/>
                         </h1>
                         <br /><br />
-
-                        <?php
-                            foreach ($org_list as $list) {
-                                echo "<div class='panel panel-primary'>
-                                      <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
-                                        <b>Organisation Name: " . $list['name'] . "</b>
-                                        <div class='btn btn-info show' style='float: right;'>Show More</div>
-                                      </div>";
-                                echo "<div class='panel-body' id='panelBody1' style='display: none;'>";
-                                echo "<ul class='list-group'>";
-                                echo "<li class='list-group-item'><b> Organisation Name: </b>" . $list['name'] . " </li><li class='list-group-item'><b>Home Country:  </b>".$list['home_country']."</li><li class='list-group-item'><b>Contact Number: </b>".$list['phone_no']."</li><li class='list-group-item'><b>Email:  </b>".$list['email']."</li>";
-                                echo "<li class='list-group-item'><b>Mailing List: </b>" . $list['mailing_list']."</li><li class='list-group-item'><b>Description: </b>".$list['description']."</li><li class='list-group-item'><b>Year Founded: </b>".$list['founded']."</li>";
-                                echo "<hr></div></div>";
-                            }
-                        ?>
                     </div>
+                    <?php
+                        foreach ($assets_list as $assets) {
+                    ?>
+                    <div class='panel panel-primary'>
+                        <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
+                            <b>Asset Name: <?php echo $assets['name']; ?> </b>
+                            <div class='btn btn-info show' style='float: right;'>Show More</div>
+                        </div>
+                        <div class='panel-body' id='panelBody1' style='display: none;'>
+                            <b>Description: </b> <?php echo $assets['description']; ?>
+                        </div>
+                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
         </div>
