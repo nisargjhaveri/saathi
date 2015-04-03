@@ -94,7 +94,7 @@
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>requests/">
+                <a href="#">
                     Requests
                 </a>
             </li>
@@ -124,7 +124,7 @@
                                         <label for="lname">Last name </label>
                                         <input type="text" class="form-control" placeholder="Enter the Last Name" id="lname" name="person[lname]" /><br>
                                         <label for="dob">Date of birth </label>
-                                        <input type="date" placeholder="Enter the DOB" class="form-control" id="dob" type="date" name="person[dob]" /><br>
+                                        <input type="date" placeholder="Enter the DOB (mm/dd/yyyy)" class="form-control" id="dob" type="date" name="person[dob]" pattern="\d{1,2}/\d{1,2}/\d{4}" /><br>
                                         <label class="sr-only" for="gender">Gender: </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>
@@ -145,7 +145,7 @@
                                     </div>
                                     <div class="panel-body" id="panelBody2">
                                         <label for="phone_no">Phone number </label>
-                                        <input placeholder="Enter the Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" /><br>
+                                        <input placeholder="Enter the Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" pattern="\d{10}" /><br>
                                         <label for="email">Email </label>
                                         <input class="form-control" type="email" placeholder="Enter the Email" id="email" type="email" name="person_contact[email]" /><br>
                                     </div>

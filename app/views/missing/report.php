@@ -94,7 +94,7 @@
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>requests/">
+                <a href="#">
                     Requests
                 </a>
             </li>
@@ -136,7 +136,7 @@
                                         <label for="lname">Last name </label>
                                         <input type="text" class="form-control" placeholder="Enter Last Name" id="lname" name="person[lname]" required /><br>
                                         <label for="dob">Date of birth </label>
-                                        <input type="date" placeholder="Enter your DOB" class="form-control" id="dob" type="date" name="person[dob]" /><br>
+                                        <input type="date" placeholder="Enter your DOB (mm/dd/yyyy)" class="form-control" id="dob" type="date" name="person[dob]" pattern="\d{1,2}/\d{1,2}/\d{4}" /><br>
                                         <label class="sr-only" for="gender">Gender: </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>
@@ -157,7 +157,7 @@
                                     </div>
                                     <div class="panel-body" id="panelBody2">
                                         <label for="phone_no">Phone number </label>
-                                        <input placeholder="Enter Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" /><br>
+                                        <input placeholder="Enter Phone Number" class="form-control" id="phone_no" pattern="\d{10}" name="person_contact[phone_no]" /><br>
                                         <label for="email">Email: </label>
                                         <input class="form-control" type="email" placeholder="Enter your Email" id="email" type="email" name="person_contact[email]" /><br>
                                         <label for="mailing_list">Mailing list </label>
@@ -175,9 +175,9 @@
                                         <label for="body_marks">Body marks </label><br>
                                         <textarea id="body_marks" class="form-control" placeholder="Enter Body Marks" name="person_detail[body_marks]"></textarea><br>
                                         <label for="height">Height </label>
-                                        <input id="height" placeholder="Enter Height" class="form-control" name="person_detail[height]" /><br>
+                                        <input id="height" placeholder="Enter Height (in cms)" class="form-control" name="person_detail[height]" type="number" step="0.01" /><br>
                                         <label for="weight">Weight </label>
-                                        <input class="form-control" placeholder="Enter Weight" id="weight" name="person_detail[weight]" /><br>
+                                        <input class="form-control" placeholder="Enter Weight" id="weight" name="person_detail[weight]" type="number" step="0.01" /><br>
                                         <label for="hair">Hair Style/Color </label>
                                         <input id="hair" placeholder="Enter Hair Style/Color" class="form-control" name="person_detail[hair]" /><br>
                                         <label for="eye_color">Eye color </label>
@@ -195,7 +195,7 @@
                                     </div>
                                     <div class="panel-body" id="panelBody4">
                                         <label for="w_phone_no">Phone number </label>
-                                        <input id="w_phone_no" class="form-control" placeholder="Enter Phone Number" name="contact_whom[phone_no]" required /><br>
+                                        <input id="w_phone_no" class="form-control" placeholder="Enter Phone Number" name="contact_whom[phone_no]" pattern="\d{10}" required /><br>
                                         <label for="w_email">Email </label>
                                         <input id="w_email" placeholder="Enter Email" class="form-control" type="email" name="contact_whom[email]" required /><br>
                                         <label for="w_mailing_list">Mailing list </label>
