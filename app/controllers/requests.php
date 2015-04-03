@@ -24,4 +24,14 @@ class requests extends Controller {
         ));
     }
 
+      function view() {
+        $request_list = false;
+
+        $request_list = $this->requests_model->get_requests();
+
+        $this->load_view('requests/view', array(
+            'request_list' => $request_list
+        ));
+    }
+
 }
