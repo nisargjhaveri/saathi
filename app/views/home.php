@@ -166,7 +166,7 @@
                             </a>
                         </div>
                         <div class="btn-group" role="group">
-                            <a href="#">
+                            <a href="<?php echo base_url(); ?>requests/">
                                 <button type="button" class="btn btn-primary">Requests</button>
                             </a>
                         </div>

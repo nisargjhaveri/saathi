@@ -94,7 +94,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>requests/">
                     Requests
                 </a>
             </li>
@@ -131,6 +131,15 @@
         </div>
     </div>
 </div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted" style="text-align: center">
+            Developed By Team Saathi <br/>
+            Powered By <a href="https://github.com/nisargjhaveri/saathi">Saathi</a>
+        </p>
+    </div>
+</footer>
 
 <!-- Toggle Script -->
 <script>
