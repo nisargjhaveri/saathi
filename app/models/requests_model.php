@@ -46,4 +46,28 @@ class requests_model extends Model {
         return $this->DB->commit();
     }
 
+    function supply($supply_details){
+	    $this->DB->autocommit(false);
+	    $supply_details['date'] = date("Y/m/d");
+	    $supply_id = $this->execute(
+			    'UPDATE requests SET supplier_id = ?, fulfill_date = ? where id = ?','isi',
+			    array(
+				    &$supply_details['supplier_id'],
+				    &$supply_details['date'],
+				    &$supply_details['request_id']
+				    )
+
+			  );
+	    if ($supply_id)
+	    {
+		    $supply_id = $supply_id->insert_id;
+	    }
+	    else
+	    {
+		    return false;
+	    }
+
+	    return $this->DB->commit();
+    }
+
 }

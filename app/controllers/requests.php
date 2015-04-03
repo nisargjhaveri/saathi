@@ -23,5 +23,18 @@ class requests extends Controller {
             'requested' => $requested
         ));
     }
+    
+    function supply(){
+	    $supplied = null;
 
+	    if(isset($_POST['supply'])){
+		    $supplied = $this->requests_model->supply(
+				    $_POST['supply_details']
+				    );
+	    }
+
+	    $this->load_view('requests/supply',array(
+			'supplied' => $supplied
+				    ));
+    }
 }
