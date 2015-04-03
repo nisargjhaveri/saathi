@@ -22,32 +22,6 @@ class camp_model extends Model {
         return $stmt;
     }
 
-    function add_new($name, $organisation_id, $camp_head, $population, $volunteers, $status, $contact_id ) {
-        $this->DB->autocommit(false);
-        $contact_id = $this->execute(
-            'INSERT INTO `camps`(`name`,`organisation_id`,`camp_head`,`population`,`volunteers`,`status`,`contact_id`) VALUES (?, ?, ? , ? , ? , ? , ?)',
-            'siisssi',
-            array(
-                &$name,
-                &$organisation_id,
-                &$camp_head,
-                &$population,
-                &$volunteers,
-                &$status,
-                &$contact_id
-
-            )
-        );
-       
-        if ($contact_id) {
-            $contact_id = $contact_id->insert_id;
-        }
-        else {
-            return 0;
-        }
-
-        return $this->DB->commit();
-    }
     function get_camps() {
 
         $camp_list = false;
