@@ -35,4 +35,12 @@ class organisations extends Controller {
         ));
     }
 
+    function list_json() {
+        $org_list = false;
+
+        $org_list = $this->organisations_model->get_organisations();
+
+        echo json_encode($org_list);
+    }
+
 }

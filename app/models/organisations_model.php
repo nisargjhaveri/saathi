@@ -65,7 +65,8 @@ class organisations_model extends Model {
         $org_list = false;
         $org_details = $this->DB->query(
             'SELECT
-                *
+                *,
+                o.id as id
             FROM
                 `organisations` o
                 JOIN `contact_details` c ON o.contact_id = c.id
