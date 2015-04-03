@@ -179,7 +179,7 @@
                                         <label for="ch_mailing_list">Mailing list </label>
                                         <input id="ch_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="ch_mailing_list" /><br>
                                         <label for="ch_mailing_address">Mailing address </label>
-                                        <input id="ch_mailing_address" class="form-control" placeholder="Enter Mailing Address" type="email" name="ch_mailing_address" /><br>
+                                        <textarea id="ch_mailing_address" class="form-control" placeholder="Enter Mailing Address" name="ch_mailing_address" ></textarea><br>
                                         <label for="ch_gis_url">GIS URL </label>
                                         <input id="ch_gis_url" class="form-control" placeholder="Enter GIS URL - iframe tag" name="ch_gis_url" /><br>    
                                     </div>
@@ -198,9 +198,9 @@
                                         <label for="mailing_list">Mailing list </label>
                                         <input id="mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="mailing_list" /><br>
                                         <label for="mailing_address">Mailing address </label>
-                                        <input id="mailing_address" class="form-control" placeholder="Enter Mailing Address" type="email" name="mailing_address" /><br>
+                                        <textarea id="mailing_address" class="form-control" placeholder="Enter Mailing Address" name="mailing_address" ></textarea><br>
                                         <label for="gis_url">GIS URL </label>
-                                        <input id="gis_url" class="form-control" placeholder="Enter GIS URL - iframe tag" name="gis_url" /><br>
+                                        <input id="gis_url" class="form-control" placeholder="Enter GIS URL - iframe tag" tname="gis_url" /><br>
                                     </div>
                                 </div>
                             </fieldset>
