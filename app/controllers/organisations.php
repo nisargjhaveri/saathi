@@ -35,6 +35,19 @@ class organisations extends Controller {
         ));
     }
 
+    function delete($org_id = null) {
+        $org_delete = false;
+
+        if ($org_id !== null) {
+            $org_delete = $this->organisations_model->delete_organisations($org_id);
+        }
+        session_start();
+        $_SESSION['org_delete'] = $org_delete;
+
+        $this->load_library('http_lib', 'http');
+        $this->http->redirect(base_url().'organisations/view/');
+    }
+
     function list_json() {
         $org_list = false;
 
