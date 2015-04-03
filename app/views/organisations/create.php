@@ -110,7 +110,7 @@
                             Create Organisation<br/>
                         </h1>
                         <br /><br />
-
+                    </div>
                         <?php
                             if ($created !== null) {
                                 if ($created == true) {
@@ -152,7 +152,6 @@
                                 <input class="btn btn-success btn-block" type="submit" name="submit" value="Create Organisation" />
                             </div>
                         </form>
-                    </div>
                 </div>
             </div>
         </div>
