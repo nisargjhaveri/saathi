@@ -88,13 +88,13 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>assets/">
                     Assets
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>requests/">
                     Requests
                 </a>
             </li>
@@ -161,12 +161,12 @@
                             </a>
                         </div>
                         <div class="btn-group" role="group">
-                            <a href="#">
+                            <a href="<?php echo base_url(); ?>assets/">
                                 <button type="button" class="btn btn-primary">Assets</button>
                             </a>
                         </div>
                         <div class="btn-group" role="group">
-                            <a href="#">
+                            <a href="<?php echo base_url(); ?>requests/">
                                 <button type="button" class="btn btn-primary">Requests</button>
                             </a>
                         </div>

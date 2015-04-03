@@ -76,7 +76,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>organisations/">
                     Organisations
                 </a>
             </li>
@@ -88,13 +88,13 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>assets/">
                     Assets
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>requests/">
                     Requests
                 </a>
             </li>

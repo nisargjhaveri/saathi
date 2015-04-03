@@ -107,51 +107,25 @@
                 <div class="col-lg-12">
                     <div class="page-header">
                         <h1 style="text-align: center;">
-                            Create Organisation<br/>
+                            Assets Available<br/>
                         </h1>
                         <br /><br />
                     </div>
-                        <?php
-                            if ($created !== null) {
-                                if ($created == true) {
-                                    echo "<div class='alert alert-success'>New Organisation Created</div>";
-                                }
-                                else {
-                                    echo "<div class='alert alert-danger'>Organisation Creation failed</div>";
-                                }
-                            echo "<br />";
-                            }
-                        ?>
-                        <form action="" method="POST">
-                            <fieldset>
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
-                                        <b>Organisation Details</b>
-                                        <div class="btn btn-info" id="show1" style="float: right">Hide</div>
-                                    </div>
-                                    <div class="panel-body" id="panelBody1">
-                                        <label for="name">Name of Organisation </label>
-                                        <input class="form-control" placeholder="Enter Name of Organisation" id="name" name="org[name]" required /><br>
-                                        <label for="home">Home Country </label>
-                                        <input class="form-control" placeholder="Enter Home Country" id="home" name="org[home]" required /><br>
-                                        <label for="phone_no">Phone number </label>
-                                        <input class="form-control" placeholder="Enter Phone Number" id="phone_no" name="contact[phone_no]" /><br>
-                                        <label for="email">Email </label>
-                                        <input class="form-control" placeholder="Enter Email" id="email" type="email" name="contact[email]" /><br>
-                                        <label for="mailing_list">Mailing list </label>
-                                        <input class="form-control" placeholder="Enter Mailing List" id="mailing_list" type="email" name="contact[mailing_list]" /><br>
-                                        <label for="desc">Description </label><br>
-                                        <textarea class="form-control" placeholder="Enter Description" id="desc" name="org[desc]"></textarea><br>
-                                        <label for="founded">Founded </label>
-                                        <input class="form-control" placeholder="Enter Year Founded" id="founded" name="org[founded]" required /><br>
-                                    </div>
-                            </fieldset>
-                            <div class="col-sm-8 col-md-4">
-                            </div>
-                            <div class="col-sm-8 col-md-4" style="padding-top: 12px;">
-                                <input class="btn btn-success btn-block" type="submit" name="submit" value="Create Organisation" />
-                            </div>
-                        </form>
+                    <?php
+                        foreach ($assets_list as $assets) {
+                    ?>
+                    <div class='panel panel-primary'>
+                        <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
+                            <b>Asset Name: <?php echo $assets['name']; ?> </b>
+                            <div class='btn btn-info show' style='float: right;'>Show More</div>
+                        </div>
+                        <div class='panel-body' id='panelBody1' style='display: none;'>
+                            <b>Description: </b> <?php echo $assets['description']; ?>
+                        </div>
+                    </div>
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
         </div>
@@ -174,11 +148,12 @@
         $("#wrapper").toggleClass("toggled");
     });
 
-    $("#show1").click(function(e) {
+    $(".show").click(function(e) {
         e.preventDefault();
-        $("#panelBody1").toggle("display");
+        $(this).closest('.panel').find('.panel-body').toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
     });
 </script>
+
 </body>
 </html>

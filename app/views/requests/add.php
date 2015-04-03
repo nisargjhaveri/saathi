@@ -8,7 +8,10 @@
     <link href="<?php echo base_url(); ?>static/css/sidebar.css" rel="stylesheet" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>static/js/bootstrap.js"></script>
-
+    <link href="<?php echo base_url(); ?>static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="<?php echo base_url(); ?>static/js/vendor/typeahead.bundle.min.js"></script>
+    <script src="<?php echo base_url(); ?>static/js/autocomplete.js"></script>
+    <link href="<?php echo base_url(); ?>static/css/vendor/typeaheadjs.css" rel="stylesheet" media="screen">
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
     <div class="container-fluid">
@@ -101,68 +104,83 @@
 
         </ul>
     </div>
-    <div class="page-content-wrapper" style="background-color: #ffffff;">
+    <div id="page-content-wrapper" style="background-color: #ffffff;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-header">
                         <h1 style="text-align: center;">
-                            Search Results<br/>
+                            Make a Request
                         </h1>
                         <br />
                     </div>
-
                     <?php
-                    if ( $results === false ) {
-                        echo "<div class='alert alert-danger'>Some error occured.</div>";
-                    }
-                    else if ( count($results) == 0 ) {
-                        echo "<div class='alert alert-warning'>No matches found. Please try again with refined parameters.</div>";
-                    }
-                    else {
-                        foreach ( $results as $person ){
-                            echo "<div class='panel panel-primary'>
-                                    <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
-                                        <b>Name: " . $person['fname'] . " " . $person['lname'] . "</b>
-                                        <div class='btn btn-info show' style='float: right;'>Show More</div>
-                                    </div>";
-                            echo "<div class='panel-body' style='display: none'>";
-                            echo "<ul class='list-group'>";
-                            echo "<li class='list-group-item'><b> First Name: </b> " . $person['fname'] . "</li>" ;
-                            echo "<li class='list-group-item'><b> Last Name: </b>" . $person['lname'] . "</li>";
-                            echo "<li class='list-group-item'><b> Gender: </b>" . $person['gender'] . '</li>';
-                            echo "<li class='list-group-item'><b> Date of Birth: </b>" . $person['dob'] . '</li>';
-                            echo "<li class='list-group-item'><b> Phone Number: </b>" . $person['phone_no'] . '</li>';
-                            echo "<li class='list-group-item'><b> Email: </b>" . $person['email'] . '</li>';
-                            echo "<li class='list-group-item'><b> Mailing List: </b>" . $person['mailing_list'] . '</li>';
-                            echo "<li class='list-group-item'><b> Body Marks: </b>" . $person['body_marks'] . '</li>';
-                            echo "<li class='list-group-item'><b> Height: </b>" . $person['height'] . '</li>';
-                            echo "<li class='list-group-item'><b> Weight: </b>" . $person['weight'] . '</li>';
-                            echo "<li class='list-group-item'><b> Hair Color/Style: </b>" . $person['hair'] . '</li>';
-                            echo "<li class='list-group-item'><b> Eye-Color: </b>" . $person['eye_color'] . '</li>';
-                            echo "<li class='list-group-item'><b> Last Seen Location: </b>" . $person['last_seen'] . '</li>';
-                            echo "<li class='list-group-item'><b> Status: </b>" . $person['status'] . '</li>';
-                            echo "</ul></div></div>";
+                        if ($requested !== null) {
+                            if ($requested == true) {
+                                echo "<div class='alert alert-success'>Requested successfully</div>";
+                            }
+                            else {
+                                echo "<div class='alert alert-danger'>Request Unsuccessful</div>";
+                            }
+                            echo "<br><br>";
                         }
-                    }
                     ?>
+                    <form action="" method="POST">
+                        <fieldset>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
+                                    <b>Want to make a request?</b>
+                                    <div class="btn btn-info show" style="float: right">Hide</div>
+                                </div>
+                                <div class="panel-body">
+                                    <label for="organisation"><b>Organisation Name </b></label>
+                                    <input class="hidden" id="organisation_id" name="details[organisation_id]" required />
+                                    <input class="form-control" placeholder="Enter Organisation Name" id="organisation" name="organisation" required />
+                                    <br><br/>
+                                    <label for="asset"><b>Asset: </b></label>
+                                    <input class="hidden" id="asset_id" name="details[asset_id]" required />
+                                    <input class="form-control" placeholder="Enter Asset Name" id="asset" name="asset" required />
+                                    <br>
+                                    <br />
+                                    <label for="priority"><b>Priority: </b></label>
+                                    <input class="form-control" placeholder="Enter Priority" id="priority" name="details[priority]" required /><br>
+                                </div>
+                        </fieldset>
+                        <div class="col-sm-8 col-md-4">
+                        </div>
+                        <div class="col-sm-8 col-md-4" style="padding-top: 12px;">
+                            <input class="btn btn-block btn-success" type="submit" name="request" value="Make the Request" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Toggle Script -->
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
 
-    $(".show").click(function(e) {
-        e.preventDefault();
-        $(this).closest('.panel').find('.panel-body').toggle("display");
-        $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
-    });
+<script>
+   $('#organisation').autocomplete(
+        '<?php echo base_url(); ?>organisations/list_json',
+        'name',
+        $('#organisation_id'),
+        'id'
+    );
+    $('#asset').autocomplete(
+         '<?php echo base_url(); ?>assets/list_json',
+         'name',
+         $('#asset_id'),
+         'id'
+     );
+   $("#menu-toggle").click(function(e) {
+       e.preventDefault();
+       $("#wrapper").toggleClass("toggled");
+   });
+
+   $(".show").click(function(e) {
+       e.preventDefault();
+       $(this).closest('.panel').find('.panel-body').toggle("display");
+       $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
+   });
 </script>
 </body>
 </html>

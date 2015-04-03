@@ -76,7 +76,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>organisations/">
                     Organisations
                 </a>
             </li>
@@ -88,13 +88,13 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>assets/">
                     Assets
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>requests/">
                     Requests
                 </a>
             </li>
@@ -115,14 +115,14 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                 <b>Want to create a new Organisation?</b>
-                                <div class="btn btn-info" id="show" style="float: right;"><a href="create" style=" color: #ffffff">Create</a></div>
+                                <a class="btn btn-info" id="show" style="float: right;" href="<?php echo base_url() ?>organisations/create" style=" color: #ffffff">Create</a>
                             </div>
                         </div>
 
                         <div class="panel panel-primary">
                             <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                 <b>Want to see all the Organisations?</b>
-                                <div class="btn btn-info" id="show" style="float: right;"><a href="view" style=" color: #ffffff">View all the organisations</a></div>
+                                <a class="btn btn-info" id="show" style="float: right;" href="<?php echo base_url() ?>organisations/view" style=" color: #ffffff">View all the organisations</a>
                             </div>
                         </div>
                     </div>

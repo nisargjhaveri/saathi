@@ -50,7 +50,7 @@ class organisations_model extends Model {
                 &$org['home'],
                 &$org['founded'],
                 &$org['desc'],
-                &$contact_id,
+                &$contact_id
             )
         );
 
@@ -65,7 +65,8 @@ class organisations_model extends Model {
         $org_list = false;
         $org_details = $this->DB->query(
             'SELECT
-                *
+                *,
+                o.id as id
             FROM
                 `organisations` o
                 JOIN `contact_details` c ON o.contact_id = c.id
@@ -74,6 +75,24 @@ class organisations_model extends Model {
             $org_list = $org_details->fetch_all(MYSQLI_ASSOC);
         }
         return $org_list;
+    }
+
+    function delete_organisations($org_id) {
+        $org_delete = false;
+
+        $delete_result = $this->execute(
+            'DELETE FROM `organisations` WHERE id=?',
+            'i',
+            array(
+                &$org_id
+            )
+        );
+
+        if ($delete_result && $this->DB->affected_rows === 1) {
+            $org_delete = true;
+        }
+
+        return $org_delete;
     }
 
 }
