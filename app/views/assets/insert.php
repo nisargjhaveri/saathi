@@ -94,7 +94,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>requests/">
                     Requests
                 </a>
             </li>
@@ -133,9 +133,9 @@
 
                                     <div class="panel-body" id="panelBody">
                                         <label for="name">Asset Name </label>
-                                        <input class="form-control" placeholder="Enter Asset Name" name='name' required/><br>
-                                        <label for="name">Description </label>
-                                        <input class="form-control" placeholder="Enter Description" name='description' /><br>
+                                        <input id="name" class="form-control" placeholder="Enter Asset Name" name='name' required/><br>
+                                        <label for="desc">Description </label>
+                                        <input id="desc" class="form-control" placeholder="Enter Description" name='description' /><br>
                                     </div>
                                 </div>
                             </fieldset>
