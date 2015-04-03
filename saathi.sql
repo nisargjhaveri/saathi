@@ -62,6 +62,8 @@ CREATE TABLE IF NOT EXISTS `contact_details` (
   `phone_no` varchar(15) NOT NULL,
   `email` varchar(255) NOT NULL,
   `mailing_list` varchar(255) NOT NULL,
+  `mailing_address` varchar(255) NOT NULL,
+  `gis_url` varchar(255) NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
