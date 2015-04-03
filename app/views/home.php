@@ -82,7 +82,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>camp/">
                     Camps
                 </a>
             </li>
@@ -156,7 +156,7 @@
                             </a>
                         </div>
                         <div class="btn-group" role="group">
-                            <a href="#">
+                            <a href="<?php echo base_url(); ?>camp/">
                                 <button type="button" class="btn btn-primary">Camps</button>
                             </a>
                         </div>
