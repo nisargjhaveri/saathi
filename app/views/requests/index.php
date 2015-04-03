@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-<h1>Requests</h1>
-<a href="add">Request</a><br>
-<a href="view"> List all Requests</a>
-=======
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,6 +122,9 @@
                             <div class="btn btn-primary">
                                 <a style="color: #ffffff" href="add">Request for an asset</a>
                             </div><br /><br />
+			    <div class="btn btn-primary">
+			    	<a style="color: #ffffff" href="view">View Requests</a>
+			    </div>
                         </div>
                     </div>
                 </div>
