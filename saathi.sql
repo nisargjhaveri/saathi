@@ -128,10 +128,10 @@ CREATE TABLE IF NOT EXISTS `persons` (
 CREATE TABLE IF NOT EXISTS `requests` (
   `id` int(11) NOT NULL,
   `organisation_id` int(11) NOT NULL,
-  `supplier_id` int(11) NOT NULL,
+  `supplier_id` int(11) NULL,
   `asset_id` int(11) NOT NULL,
   `request_date` date NOT NULL,
-  `fulfill_date` date NOT NULL,
+  `fulfill_date` date NULL,
   `priority` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
