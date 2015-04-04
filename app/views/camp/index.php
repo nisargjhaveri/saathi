@@ -76,25 +76,26 @@
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>organisations/">
+                <a href="<?php echo base_url(); ?>organisations/
+		">
                     Organisations
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>camp/">
                     Camps
                 </a>
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>assets/">
+                <a href="#">
                     Assets
                 </a>
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>requests/">
+                <a href="#">
                     Requests
                 </a>
             </li>
@@ -107,23 +108,22 @@
                 <div class="col-lg-12">
                     <div class="page-header">
                         <h1 style="text-align: center;">
-                            Requests<br/>
-                            <small>Are you in need of something? Request here!</small>
+                            Camps Registry<br/>
+                            <small>Create a New one or Get the List of current Camps</small>
                         </h1>
                         <br /><br />
-                    </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
-                            <b>Want to make a Request?</b>
-                            <div class="btn btn-info" id="show" style="float: right">Hide</div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
+                                <b>Want to create a new Camp?</b>
+                                <div class="btn btn-info" id="show" style="float: right;"><a href="insert" style=" color: #ffffff">Create</a></div>
+                            </div>
                         </div>
 
-                        <div class="panel-body" id="panelBody">
-                            <div class="btn btn-primary">
-                                <a style="color: #ffffff" href="add">Request for an asset</a>
-                            </div><br /><br />
-                            <div class="btn btn-primary">
-                                <a style="color: #ffffff" href="view">View Requests</a>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
+                                <b>Want to see all the Camps?</b>
+                                <div class="btn btn-info" id="show" style="float: right;"><a href="view" style=" color: #ffffff">View all the camps</a></div>
                             </div>
                         </div>
                     </div>
@@ -132,29 +132,12 @@
         </div>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted" style="text-align: center">
-            Developed By Team Saathi <br/>
-            Powered By <a href="https://github.com/nisargjhaveri/saathi">Saathi</a>
-        </p>
-    </div>
-</footer>
-
 <!-- Toggle Script -->
 <script>
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-
-    $("#show").click(function(e) {
-        e.preventDefault();
-        $("#panelBody").toggle("display");
-        $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
-    });
 </script>
-
 </body>
 </html>
