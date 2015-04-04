@@ -32,7 +32,7 @@ class requests_model extends Model {
                 &$details['organisation_id'],
                 &$details['asset_id'],
                 &$details['date'],
-		&$details['priority'],
+                &$details['priority'],
             )
         );
         if ($requests_id) {
@@ -44,6 +44,24 @@ class requests_model extends Model {
 
 
         return $this->DB->commit();
+    }
+
+    function get_requests() {
+        $request_list = false;
+        $request_details = $this->DB->query(
+            'SELECT
+                *,
+            org.name as org,
+            asset.name as asset
+            FROM
+                `requests` req
+                JOIN `organisations` org ON req.organisation_id = org.id
+                JOIN `assets` asset ON req.asset_id = asset.id
+            ');
+        if ($request_details) {
+            $request_list = $request_details->fetch_all(MYSQLI_ASSOC);
+        }
+        return $request_list;
     }
 
 }

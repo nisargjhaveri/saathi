@@ -94,7 +94,7 @@
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>requests/">
+                <a href="#">
                     Requests
                 </a>
             </li>
@@ -107,25 +107,26 @@
                 <div class="col-lg-12">
                     <div class="page-header">
                         <h1 style="text-align: center;">
-                            Requests<br/>
-                            <small>Are you in need of something? Request here!</small>
+                            Request List<br/>
                         </h1>
                         <br /><br />
-                    </div>
-                    <div class="panel panel-primary">
-                        <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
-                            <b>Want to make a Request?</b>
-                            <div class="btn btn-info" id="show" style="float: right">Hide</div>
-                        </div>
 
-                        <div class="panel-body" id="panelBody">
-                            <div class="btn btn-primary">
-                                <a style="color: #ffffff" href="add">Request for an asset</a>
-                            </div><br /><br />
-                            <div class="btn btn-primary">
-                                <a style="color: #ffffff" href="view">View Requests</a>
-                            </div>
-                        </div>
+                        <?php
+                            foreach ($request_list as $list) {
+                                if($list['supplier_id']==NULL)
+                                {
+                                    echo "<div class='panel panel-primary'>
+                                          <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
+                                            <b>Organisation Name: " . $list['org'] . "</b>
+                                            <div class='btn btn-info show' style='float: right;'>Show More</div>
+                                          </div>";
+                                    echo "<div class='panel-body' style='display: none;'>";
+                                    echo "<ul class='list-group'>";
+                                    echo "<li class='list-group-item'><b> Organisation Name: </b>" . $list['org'] . " </li><li class='list-group-item'><b>Asset Name:  </b>".$list['asset']."</li><li class='list-group-item'><b>Priority: </b>".$list['priority']."</li><li class='list-group-item'><b>Request Date:  </b>".$list['request_date']."</li>";
+                                    echo "</div></div>";
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -149,9 +150,9 @@
         $("#wrapper").toggleClass("toggled");
     });
 
-    $("#show").click(function(e) {
+    $(".show").click(function(e) {
         e.preventDefault();
-        $("#panelBody").toggle("display");
+        $(this).closest('.panel').find('.panel-body').toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
     });
 </script>
