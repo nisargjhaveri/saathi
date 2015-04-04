@@ -76,7 +76,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>organisations/">
                     Organisations
                 </a>
             </li>
@@ -119,13 +119,13 @@
                                         <div class="btn btn-info" id="show1" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body" id="panelBody1">
-                                        <label class="sr-only" for="fname">First name: </label>
+                                        <label for="fname">First name </label>
                                         <input id="fname" type="text" class="form-control" name="person[fname]" placeholder="Enter the First Name" required /><br>
-                                        <label class="sr-only" for="lname">Last name: </label>
+                                        <label for="lname">Last name </label>
                                         <input type="text" class="form-control" placeholder="Enter the Last Name" id="lname" name="person[lname]" /><br>
-                                        <label class="sr-only" for="gender">Gender: </label>
-                                        <label class="sr-only" for="dob">Date of birth: </label>
+                                        <label for="dob">Date of birth </label>
                                         <input type="date" placeholder="Enter the DOB" class="form-control" id="dob" type="date" name="person[dob]" /><br>
+                                        <label class="sr-only" for="gender">Gender: </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>
                                                 <option class="dropdown-toggle" value="" disabled selected>Select gender</option>
@@ -144,9 +144,9 @@
                                         <div class="btn btn-info" id="show2" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body" id="panelBody2">
-                                        <label class="sr-only" for="phone_no">Phone number: </label>
+                                        <label for="phone_no">Phone number </label>
                                         <input placeholder="Enter the Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" /><br>
-                                        <label class="sr-only" for="email">Email: </label>
+                                        <label for="email">Email </label>
                                         <input class="form-control" type="email" placeholder="Enter the Email" id="email" type="email" name="person_contact[email]" /><br>
                                     </div>
                                 </div>
@@ -177,7 +177,7 @@
                             <div class="col-xs-8 col-sm-4">
                             </div>
                             <div class="col-xs-8 col-sm-4" style="padding-top: 12px">
-                                <input class="btn btn-lg btn-success btn-block" type="submit" name="search" value="Search for this person" />
+                                <input class="btn btn-lg btn-success btn-block" style="width: auto" type="submit" name="search" value="Search for this person" />
                             </div>
                         </form>
                     </div>
