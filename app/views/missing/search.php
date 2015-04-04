@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<?php echo base_url(); ?>static/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo base_url(); ?>static/css/sidebar.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>static/js/bootstrap.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
@@ -124,7 +126,7 @@
                                         <label for="lname">Last name </label>
                                         <input type="text" class="form-control" placeholder="Enter the Last Name" id="lname" name="person[lname]" /><br>
                                         <label for="dob">Date of birth </label>
-                                        <input type="date" placeholder="Enter the DOB (mm/dd/yyyy)" class="form-control" id="dob" type="date" name="person[dob]" pattern="\d{1,2}/\d{1,2}/\d{4}" /><br>
+                                        <input type="text" placeholder="Enter the DOB (yyyy-mm-dd)" class="form-control" id="dob" name="person[dob]" pattern="(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}" /><br>
                                         <label class="sr-only" for="gender">Gender: </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>
@@ -225,6 +227,12 @@
         e.preventDefault();
         $("#panelBody4").toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
+    });
+
+    $(function() {
+        $( "#dob" ).datepicker({
+            dateFormat: "yy-mm-dd"
+        });
     });
 
 </script>
