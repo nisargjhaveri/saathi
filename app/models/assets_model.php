@@ -56,4 +56,41 @@ class assets_model extends Model {
 
         return $assets_list;
     }
+
+    function get_asset($id) {
+        $asset = false;
+
+        $assets = $this->execute(
+            'SELECT * FROM `assets` WHERE `id` = ? ',
+            'i',
+            array(
+                &$id,
+            )
+        );
+
+        if (!$assets) {
+            return false;
+        }
+
+        return $assets->fetch_all(MYSQLI_ASSOC)[0];
+    }
+
+    function update($id, $name, $description){
+        
+        $asset_id = $this->execute(
+            'UPDATE `assets` SET `name` = ?, `description` = ? WHERE `id` = ?',
+            'ssi',
+            array(
+                &$name,
+                &$description,
+                &$id,
+            )
+        );
+
+        if (!$asset_id) {
+            return false;
+        }
+
+        return true;
+    }
 }
