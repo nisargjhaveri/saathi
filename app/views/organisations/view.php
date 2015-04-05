@@ -109,7 +109,6 @@
                         <h1 style="text-align: center;">
                             Organisation List<br/>
                         </h1>
-                        <br /><br />
                     </div>
                         <?php
                             session_start();
