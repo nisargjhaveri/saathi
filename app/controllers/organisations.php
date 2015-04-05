@@ -12,6 +12,8 @@ class organisations extends Controller {
 
     function create() {
         $created = null;
+        $mode = "Create";
+        $org_info = null;
 
         if (isset($_POST['submit'])) {
             $created = $this->organisations_model->create_org(
@@ -21,7 +23,9 @@ class organisations extends Controller {
         }
 
         $this->load_view('organisations/create', array(
-            'created' => $created
+            'created' => $created,
+            'mode' => $mode,
+            'org_info' => null
         ));
     }
 
@@ -46,6 +50,34 @@ class organisations extends Controller {
 
         $this->load_library('http_lib', 'http');
         $this->http->redirect(base_url().'organisations/view/');
+    }
+
+    function update($org_id = null) {
+        if ($org_id === null) {
+            $this->load_library('http_lib', 'http');
+            $this->http->redirect(base_url().'organisations/');
+        }
+        $updated = null;
+        $mode = "Update";
+        $org_info = null;
+
+        if (isset($_POST['submit'])) {
+            $updated = $this->organisations_model->update_org(
+                $org_id,
+                $_POST['org'],
+                $_POST['contact']
+            );
+        }
+
+        if ($org_id !== null) {
+            $org_info = $this->organisations_model->get_unique_org($org_id);
+        }
+        
+        $this->load_view('organisations/create', array(
+            'created' => $updated,
+            'mode' => $mode,
+            'org_info' => $org_info
+        ));
     }
 
     function list_json() {

@@ -125,6 +125,8 @@
                                         <b>Organisation Name: " . $list['name'] . "</b>
                                         <button class='btn btn-danger' style='float: right;' data-toggle='modal' data-target='#myModal' onclick='send_request(\"" . $list['name'] . "\", " . $list['id'] . ")'> Delete </button>
                                         <div style='float: right;'>&nbsp;</div>
+                                        <a class='btn btn-success' href='". base_url(). "organisations/update/". $list['id'] ."' style='float: right;' '> Update </a>
+                                        <div style='float: right;'>&nbsp;</div>
                                         <div class='btn btn-info show' style='float: right;'> Show More </div>
 
                                       </div>";
