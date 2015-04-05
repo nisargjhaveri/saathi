@@ -53,7 +53,6 @@ class missing extends Controller {
        	$con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 	$q = "SELECT * FROM persons where id= '$id'";
 	$result = mysqli_query($con,$q);
-	$tmp_id = 2*$id - 1;
 	if($result){
 		$per = mysqli_fetch_array($result,MYSQLI_ASSOC);
 	}
@@ -62,7 +61,8 @@ class missing extends Controller {
 	if($result){
 		$per_det = mysqli_fetch_array($result,MYSQLI_ASSOC);
 	}
-	$q = "SELECT * FROM contact_details where id= '$id'";
+	$tmp_id = 2*$id - 1;
+	$q = "SELECT * FROM contact_details where id= '$tmp_id'";
 	$result = mysqli_query($con,$q);
 	if($result){
 		$per_cont = mysqli_fetch_array($result,MYSQLI_ASSOC);
