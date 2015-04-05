@@ -8,6 +8,8 @@
     <link href="<?php echo base_url(); ?>static/css/sidebar.css" rel="stylesheet" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>static/js/bootstrap.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="<?php echo base_url(); ?>static/js/locate.js"></script>
 
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
@@ -111,6 +113,7 @@
                             Report a Missing Person<br/>
                         </h1>
                         <br />
+                    </div>
                         <?php
                         if ($reported !== null) {
                             if ($reported == true) {
@@ -128,9 +131,9 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                         <b>Common details about the person</b>
-                                        <div class="btn btn-info" id="show1" style="float: right">Hide</div>
+                                        <div class="btn btn-info show" style="float: right">Hide</div>
                                     </div>
-                                    <div class="panel-body" id="panelBody1">
+                                    <div class="panel-body">
                                         <label for="fname">First name </label>
                                         <input id="fname" type="text" class="form-control" name="person[fname]" placeholder="Enter First Name" required /><br>
                                         <label for="lname">Last name </label>
@@ -153,9 +156,9 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                         <b>Contact details of missing person</b>
-                                        <div class="btn btn-info" id="show2" style="float: right">Hide</div>
+                                        <div class="btn btn-info show" style="float: right">Hide</div>
                                     </div>
-                                    <div class="panel-body" id="panelBody2">
+                                    <div class="panel-body">
                                         <label for="phone_no">Phone number </label>
                                         <input placeholder="Enter Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" /><br>
                                         <label for="email">Email: </label>
@@ -169,9 +172,9 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                         <b>Additional information about missing person</b>
-                                        <div class="btn btn-info" id="show3" style="float: right">Hide</div>
+                                        <div class="btn btn-info show" style="float: right">Hide</div>
                                     </div>
-                                    <div class="panel-body" id="panelBody3">
+                                    <div class="panel-body">
                                         <label for="body_marks">Body marks </label><br>
                                         <textarea id="body_marks" class="form-control" placeholder="Enter Body Marks" name="person_detail[body_marks]"></textarea><br>
                                         <label for="height">Height </label>
@@ -191,15 +194,35 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                         <b>Whom to contact?</b>
-                                        <div class="btn btn-info" id="show4" style="float: right">Hide</div>
+                                        <div class="btn btn-info show" style="float: right">Hide</div>
                                     </div>
-                                    <div class="panel-body" id="panelBody4">
+                                    <div class="panel-body">
                                         <label for="w_phone_no">Phone number </label>
                                         <input id="w_phone_no" class="form-control" placeholder="Enter Phone Number" name="contact_whom[phone_no]" required /><br>
                                         <label for="w_email">Email </label>
                                         <input id="w_email" placeholder="Enter Email" class="form-control" type="email" name="contact_whom[email]" required /><br>
                                         <label for="w_mailing_list">Mailing list </label>
                                         <input id="w_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="contact_whom[mailing_list]" /><br>
+                                    </div>
+                                </div>
+                                <!-- TODO Automatic adding of coordinates into DB after selection of location -->
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
+                                        <b>Nearest Landmark to the Last Seen Location</b>
+                                        <div class="btn btn-info show" style="float: right">Hide</div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <label for="my-address"><b>Landmark Nearest to Last Seen Location</b></label>
+                                        <input type="text" class="form-control" placeholder="Enter Nearest Landmark" id="my-address" name="person_contact[mailing_address]" />
+                                        <br />
+                                        <center>
+                                            <div class="btn btn-success" id="getCords" onclick="codeAddress();">Show on Map</div>
+                                            <br />
+                                            <input name="person_contact[latitude]" id="lat" value="" style="visibility: hidden"/>
+                                            <input name="person_contact[longitude]" id="long" value="" style="visibility: hidden"/>
+
+                                            <div id="map_canvas" style="width: 500px; height: 300px"></div>
+                                        </center>
                                     </div>
                                 </div>
                             </fieldset>
@@ -209,7 +232,6 @@
                                 <input class="btn btn-lg btn-success btn-block" type="submit" name="report" value="Report missing" />
                             </div>
                         </form>
-                    </div>
                 </div>
             </div>
         </div>
@@ -232,27 +254,9 @@
         $("#wrapper").toggleClass("toggled");
     });
 
-    $("#show1").click(function(e) {
+    $(".show").click(function(e) {
         e.preventDefault();
-        $("#panelBody1").toggle("display");
-        $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
-    });
-
-    $("#show2").click(function(e) {
-        e.preventDefault();
-        $("#panelBody2").toggle("display");
-        $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
-    });
-
-    $("#show3").click(function(e) {
-        e.preventDefault();
-        $("#panelBody3").toggle("display");
-        $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
-    });
-
-    $("#show4").click(function(e) {
-        e.preventDefault();
-        $("#panelBody4").toggle("display");
+        $(this).closest('.panel').find('.panel-body').toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
     });
 

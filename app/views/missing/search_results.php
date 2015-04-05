@@ -8,6 +8,8 @@
     <link href="<?php echo base_url(); ?>static/css/sidebar.css" rel="stylesheet" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>static/js/bootstrap.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="<?php echo base_url(); ?>static/js/locate.js"></script>
 
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
@@ -120,7 +122,7 @@
                         echo "<div class='alert alert-warning'>No matches found. Please try again with refined parameters.</div>";
                     }
                     else {
-                        foreach ( $results as $person ){
+                        foreach ($results as $person) {
                             echo "<div class='panel panel-primary'>
                                     <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
                                         <b>Name: " . $person['fname'] . " " . $person['lname'] . "</b>
@@ -128,7 +130,7 @@
                                     </div>";
                             echo "<div class='panel-body' style='display: none'>";
                             echo "<ul class='list-group'>";
-                            echo "<li class='list-group-item'><b> First Name: </b> " . $person['fname'] . "</li>" ;
+                            echo "<li class='list-group-item'><b> First Name: </b> " . $person['fname'] . "</li>";
                             echo "<li class='list-group-item'><b> Last Name: </b>" . $person['lname'] . "</li>";
                             echo "<li class='list-group-item'><b> Gender: </b>" . $person['gender'] . '</li>';
                             echo "<li class='list-group-item'><b> Date of Birth: </b>" . $person['dob'] . '</li>';
@@ -143,6 +145,32 @@
                             echo "<li class='list-group-item'><b> Last Seen Location: </b>" . $person['last_seen'] . '</li>';
                             echo "<li class='list-group-item'><b> Status: </b>" . $person['status'] . '</li>';
                             echo "</ul></div></div>";
+
+                            if ($person['longitude'] != 0 || $person['latitude'] != 0) {
+                                ?>
+                                <div class="panel panel-info">
+                                    <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
+                                        <b>Last Seen Location(Nearest Landmark)</b>
+
+                                        <div class="btn btn-primary show" style="float: right">Hide</div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <center>
+                                            <div class="map_canvas" style="width: 600px; height: 300px">
+                                                <div class="infotext">
+                                                    <div class="my-address"
+                                                         style="visibility:hidden;"><?php echo $person['mailing_address']; ?></div>
+                                                    <div class="latitude"
+                                                         style="display: none"><?php echo $person['latitude']; ?></div>
+                                                    <div class="longitude"
+                                                         style="display: none"><?php echo $person['longitude']; ?></div>
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </div>
+                                </div>
+                            <?php
+                            }
                         }
                     }
                     ?>

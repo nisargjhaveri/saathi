@@ -26,12 +26,15 @@ class missing_model extends Model {
         $this->DB->autocommit(false);
 
         $contact_id = $this->execute(
-            'INSERT INTO `contact_details`(`phone_no`, `email`, `mailing_list`) VALUES (?, ?, ?)',
-            'sss',
+            'INSERT INTO `contact_details`(`phone_no`, `email`, `mailing_list`, `mailing_address`, `latitude`, `longitude`) VALUES (?, ?, ?, ?, ?, ?)',
+            'ssssss',
             array(
                 &$person_contact['phone_no'],
                 &$person_contact['email'],
                 &$person_contact['mailing_list'],
+                &$person_contact['mailing_address'],
+                &$person_contact['latitude'],
+                &$person_contact['longitude'],
             )
         );
 
