@@ -124,6 +124,15 @@
                             }
                             echo "<br><br>";
                         }
+			else if ($updated !== null) {
+                            if ($updated == true) {
+                                echo "<div class='alert alert-success'> Updated Successfully </div>";
+                            }
+                            else {
+                                echo "<div class='alert alert-danger'> Submission failed </div>";
+                            }
+                            echo "<br><br>";
+                        }
                         ?>
 
                         <form action="" method="POST">
@@ -135,11 +144,11 @@
                                     </div>
                                     <div class="panel-body">
                                         <label for="fname">First name </label>
-                                        <input id="fname" type="text" class="form-control" name="person[fname]" placeholder="Enter First Name" required /><br>
+                                        <input id="fname" value="<?php if(isset($per)){echo $per['fname'];} ?>" type="text" class="form-control" name="person[fname]" placeholder="Enter First Name" required /><br>
                                         <label for="lname">Last name </label>
-                                        <input type="text" class="form-control" placeholder="Enter Last Name" id="lname" name="person[lname]" required /><br>
+                                        <input type="text" value="<?php if(isset($per)){echo $per['lname'];} ?>" class="form-control" placeholder="Enter Last Name" id="lname" name="person[lname]" required /><br>
                                         <label for="dob">Date of birth </label>
-                                        <input type="date" placeholder="Enter your DOB" class="form-control" id="dob" type="date" name="person[dob]" /><br>
+                                        <input type="date" value="<?php if(isset($per)){echo $per['dob'];} ?>" placeholder="Enter your DOB" class="form-control" id="dob" type="date" name="person[dob]" /><br>
                                         <label class="sr-only" for="gender">Gender: </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>
@@ -160,11 +169,11 @@
                                     </div>
                                     <div class="panel-body">
                                         <label for="phone_no">Phone number </label>
-                                        <input placeholder="Enter Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" /><br>
+                                        <input value="<?php if(isset($per_cont)){echo $per_cont['phone_no'];} ?>" placeholder="Enter Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" /><br>
                                         <label for="email">Email: </label>
-                                        <input class="form-control" type="email" placeholder="Enter your Email" id="email" type="email" name="person_contact[email]" /><br>
+                                        <input value="<?php if(isset($per_cont)){echo $per_cont['email'];} ?>" class="form-control" type="email" placeholder="Enter your Email" id="email" type="email" name="person_contact[email]" /><br>
                                         <label for="mailing_list">Mailing list </label>
-                                        <input class="form-control" placeholder="Enter mailing-list" id="mailing_list" type="email" name="person_contact[mailing_list]" /><br>
+                                        <input value="<?php if(isset($per_cont)){echo $per_cont['mailing_list'];} ?>" class="form-control" placeholder="Enter mailing-list" id="mailing_list" type="email" name="person_contact[mailing_list]" /><br>
                                     </div>
                                 </div>
                             </fieldset>
@@ -176,17 +185,17 @@
                                     </div>
                                     <div class="panel-body">
                                         <label for="body_marks">Body marks </label><br>
-                                        <textarea id="body_marks" class="form-control" placeholder="Enter Body Marks" name="person_detail[body_marks]"></textarea><br>
+                                        <textarea id="body_marks" class="form-control" placeholder="Enter Body Marks" name="person_detail[body_marks]"><?php if(isset($per_det)){echo $per_det['body_marks'];} ?></textarea><br>
                                         <label for="height">Height </label>
-                                        <input id="height" placeholder="Enter Height" class="form-control" name="person_detail[height]" /><br>
+                                        <input value="<?php if(isset($per_det)){echo $per_det['height'];} ?>" id="height" placeholder="Enter Height" class="form-control" name="person_detail[height]" /><br>
                                         <label for="weight">Weight </label>
-                                        <input class="form-control" placeholder="Enter Weight" id="weight" name="person_detail[weight]" /><br>
+                                        <input value="<?php if(isset($per_det)){echo $per_det['weight'];} ?>" class="form-control" placeholder="Enter Weight" id="weight" name="person_detail[weight]" /><br>
                                         <label for="hair">Hair Style/Color </label>
-                                        <input id="hair" placeholder="Enter Hair Style/Color" class="form-control" name="person_detail[hair]" /><br>
+                                        <input value="<?php if(isset($per_det)){echo $per_det['hair'];} ?>" id="hair" placeholder="Enter Hair Style/Color" class="form-control" name="person_detail[hair]" /><br>
                                         <label for="eye_color">Eye color </label>
-                                        <input id="eye_color" class="form-control" placeholder="Enter Eye color" name="person_detail[eye_color]" /><br>
+                                        <input value="<?php if(isset($per_det)){echo $per_det['eye_color'];} ?>" id="eye_color" class="form-control" placeholder="Enter Eye color" name="person_detail[eye_color]" /><br>
                                         <label for="last_seen">Last seen (When, where, condition) </label><br>
-                                        <textarea id="last_seen" placeholder="Enter Last Seen Location" class="form-control" name="person_detail[last_seen]"></textarea><br>
+                                        <textarea id="last_seen" placeholder="Enter Last Seen Location" class="form-control" name="person_detail[last_seen]"><?php if(isset($per_det)){echo $per_det['last_seen'];} ?></textarea><br>
                                     </div>
                                 </div>
                             </fieldset>
@@ -198,11 +207,11 @@
                                     </div>
                                     <div class="panel-body">
                                         <label for="w_phone_no">Phone number </label>
-                                        <input id="w_phone_no" class="form-control" placeholder="Enter Phone Number" name="contact_whom[phone_no]" required /><br>
+                                        <input value="<?php if(isset($per_cont_w)){echo $per_cont_w['phone_no'];} ?>" id="w_phone_no" class="form-control" placeholder="Enter Phone Number" name="contact_whom[phone_no]" required /><br>
                                         <label for="w_email">Email </label>
-                                        <input id="w_email" placeholder="Enter Email" class="form-control" type="email" name="contact_whom[email]" required /><br>
+                                        <input value="<?php if(isset($per_cont_w)){echo $per_cont_w['email'];} ?>" id="w_email" placeholder="Enter Email" class="form-control" type="email" name="contact_whom[email]" required /><br>
                                         <label for="w_mailing_list">Mailing list </label>
-                                        <input id="w_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="contact_whom[mailing_list]" /><br>
+                                        <input value="<?php if(isset($per_cont_w)){echo $per_cont_w['mailing_list'];} ?>" id="w_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="contact_whom[mailing_list]" /><br>
                                     </div>
                                 </div>
                                 <!-- TODO Automatic adding of coordinates into DB after selection of location -->
@@ -213,13 +222,13 @@
                                     </div>
                                     <div class="panel-body">
                                         <label for="my-address"><b>Landmark Nearest to Last Seen Location</b></label>
-                                        <input type="text" class="form-control" placeholder="Enter Nearest Landmark" id="my-address" name="person_contact[mailing_address]" />
+					<input value="<?php if(isset($per_cont)){echo $per_cont['mailing_address'];} ?>" type="text" class="form-control" placeholder="Enter Nearest Landmark" id="my-address" name="person_contact[mailing_address]" />
                                         <br />
                                         <center>
                                             <div class="btn btn-success" id="getCords" onclick="codeAddress();">Show on Map</div>
                                             <br />
-                                            <input name="person_contact[latitude]" id="lat" value="" style="visibility: hidden"/>
-                                            <input name="person_contact[longitude]" id="long" value="" style="visibility: hidden"/>
+					    <input name="person_contact[latitude]" id="lat" value="" style="visibility: hidden"/>
+					    <input name="person_contact[longitude]" id="long" value="" style="visibility: hidden"/>
 
                                             <div id="map_canvas" style="width: 500px; height: 300px"></div>
                                         </center>
