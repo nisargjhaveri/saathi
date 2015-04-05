@@ -138,7 +138,7 @@
                                         <label for="lname">Last name </label>
                                         <input type="text" class="form-control" placeholder="Enter Last Name" id="lname" name="person[lname]" required /><br>
                                         <label for="dob">Date of birth </label>
-                                        <input type="text" placeholder="Enter your DOB (yyyy-mm-dd)" class="form-control" id="dob" name="person[dob]" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" /><br>
+                                        <input type="text" placeholder="Enter your DOB (yyyy-mm-dd)" class="form-control" id="dob" name="person[dob]" pattern="(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}" /><br>
                                         <label class="sr-only" for="gender">Gender: </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>

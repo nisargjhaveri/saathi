@@ -8,6 +8,8 @@
     <link href="<?php echo base_url(); ?>static/css/sidebar.css" rel="stylesheet" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>static/js/bootstrap.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="<?php echo base_url(); ?>static/js/locate.js"></script>
 
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
@@ -82,7 +84,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>camp/">
                     Camps
                 </a>
             </li>
@@ -127,7 +129,7 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                         <b>Organisation Details</b>
-                                        <div class="btn btn-info" id="show1" style="float: right">Hide</div>
+                                        <div class="btn btn-info show" id="show1" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body" id="panelBody1">
                                         <label for="name">Name of Organisation </label>
@@ -145,6 +147,27 @@
                                         <label for="founded">Founded </label>
                                         <input class="form-control" placeholder="Enter Year Founded" id="founded" name="org[founded]" required /><br>
                                     </div>
+                                </div>
+                                <!-- TODO Automatic adding of coordinates into DB after selection of location -->
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
+                                        <b>Locate on Map</b>
+                                        <div class="btn btn-info show" style="float: right">Hide</div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <label for="my-address"><b>Address</b></label>
+                                        <input type="text" class="form-control" placeholder="Enter Address" id="my-address" name="contact[mailing_address]" />
+                                        <br />
+                                        <center>
+                                            <div class="btn btn-success" id="getCords" onclick="codeAddress();">Show on Map</div>
+                                            <br />
+                                            <input name="contact[latitude]" id="lat" value="" style="visibility: hidden"/>
+                                            <input name="contact[longitude]" id="long" value="" style="visibility: hidden"/>
+
+                                            <div id="map_canvas" style="width: 500px; height: 300px"></div>
+                                        </center>
+                                    </div>
+                                </div>
                             </fieldset>
                             <div class="col-sm-8 col-md-4">
                             </div>
@@ -174,9 +197,9 @@
         $("#wrapper").toggleClass("toggled");
     });
 
-    $("#show1").click(function(e) {
+    $(".show").click(function(e) {
         e.preventDefault();
-        $("#panelBody1").toggle("display");
+        $(this).closest('.panel').find('.panel-body').toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
     });
 </script>

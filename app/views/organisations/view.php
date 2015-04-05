@@ -8,6 +8,8 @@
     <link href="<?php echo base_url(); ?>static/css/sidebar.css" rel="stylesheet" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>static/js/bootstrap.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="<?php echo base_url(); ?>static/js/locate.js"></script>
 
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
@@ -109,7 +111,6 @@
                         <h1 style="text-align: center;">
                             Organisation List<br/>
                         </h1>
-                        <br /><br />
                     </div>
                         <?php
                             session_start();
@@ -122,18 +123,44 @@
                                 echo "<div class='panel panel-primary'>
                                       <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
                                         <b>Organisation Name: " . $list['name'] . "</b>
-                                        <button class='btn btn-danger' style='float: right;' data-toggle='modal' data-target='#myModal' onclick='send_request(\"".$list['name']."\", ".$list['id'].")'> Delete </button>
+                                        <button class='btn btn-danger' style='float: right;' data-toggle='modal' data-target='#myModal' onclick='send_request(\"" . $list['name'] . "\", " . $list['id'] . ")'> Delete </button>
                                         <div style='float: right;'>&nbsp;</div>
                                         <div class='btn btn-info show' style='float: right;'> Show More </div>
 
                                       </div>";
                                 echo "<div class='panel-body' id='panelBody1' style='display: none;'>";
                                 echo "<ul class='list-group'>";
-                                echo "<li class='list-group-item'><b> Organisation Name: </b>" . $list['name'] . " </li><li class='list-group-item'><b>Home Country:  </b>".$list['home_country']."</li><li class='list-group-item'><b>Contact Number: </b>".$list['phone_no']."</li><li class='list-group-item'><b>Email:  </b>".$list['email']."</li>";
-                                echo "<li class='list-group-item'><b>Mailing List: </b>" . $list['mailing_list']."</li><li class='list-group-item'><b>Description: </b>".$list['description']."</li><li class='list-group-item'><b>Year Founded: </b>".$list['founded']."</li>";
+                                echo "<li class='list-group-item'><b> Organisation Name: </b>" . $list['name'] . " </li><li class='list-group-item'><b>Home Country:  </b>" . $list['home_country'] . "</li><li class='list-group-item'><b>Contact Number: </b>" . $list['phone_no'] . "</li><li class='list-group-item'><b>Email:  </b>" . $list['email'] . "</li>";
+                                echo "<li class='list-group-item'><b>Mailing List: </b>" . $list['mailing_list'] . "</li><li class='list-group-item'><b>Description: </b>" . $list['description'] . "</li><li class='list-group-item'><b>Year Founded: </b>" . $list['founded'] . "</li>";
                                 echo "</div></div>";
+
+                                if ($list['longitude'] != 0 || $list['latitude'] != 0) {
+                            ?>
+                                    <div class="panel panel-info">
+                                        <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
+                                            <b>Location</b>
+
+                                            <div class="btn btn-primary show" style="float: right">Hide</div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <center>
+                                                <div class="map_canvas" style="width: 600px; height: 300px">
+                                                    <div class="infotext">
+                                                        <div class="my-address"
+                                                             style="visibility:hidden;"><?php echo $list['mailing_address']; ?></div>
+                                                        <div class="latitude"
+                                                             style="display: none"><?php echo $list['latitude']; ?></div>
+                                                        <div class="longitude"
+                                                             style="display: none"><?php echo $list['longitude']; ?></div>
+                                                    </div>
+                                                </div>
+                                            </center>
+                                        </div>
+                                    </div>
+                                <?php
+                                }
                             }
-                        ?>
+                    ?>
                 </div>
             </div>
         </div>

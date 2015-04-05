@@ -94,7 +94,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>requests/">
                     Requests
                 </a>
             </li>
@@ -109,15 +109,22 @@
                         <h1 style="text-align: center;">
                             Request List<br/>
                         </h1>
-                        <br /><br />
-
+                    </div>
                         <?php
+                            session_start();
+                            if ((isset($_SESSION['request_delete'])) && ($_SESSION['request_delete'] === true)) {
+                                echo "<div class='alert alert-success'>Request Successfully Deleted</div>";
+                                echo "<br />";
+                                unset($_SESSION['request_delete']);
+                            }
                             foreach ($request_list as $list) {
                                 if($list['supplier_id']==NULL)
                                 {
                                     echo "<div class='panel panel-primary'>
                                           <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
                                             <b>Organisation Name: " . $list['org'] . "</b>
+                                            <button class='btn btn-danger' style='float: right;' data-toggle='modal' data-target='#myModal' onclick='send_request(\"".$list['org']."\", ". "\"".$list['asset']."\", ".$list['id'].")'> Delete </button>
+                                            <div style='float: right;'>&nbsp;</div>
                                             <div class='btn btn-info show' style='float: right;'>Show More</div>
                                           </div>";
                                     echo "<div class='panel-body' style='display: none;'>";
@@ -127,11 +134,29 @@
                                 }
                             }
                         ?>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Confirmation Model -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Request Name</h4>
+                </div>
+                <div class="modal-body">
+                    Are you Sure you Want to Delete this Request?
+                </div>
+                <div class="modal-footer" id="modal_footer">
+                    Confirmation Buttons
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 <footer class="footer">
@@ -155,6 +180,13 @@
         $(this).closest('.panel').find('.panel-body').toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
     });
+
+    function send_request(org_name, asset_name, request_id) {
+        $('#modal_footer').html("");
+        $('#myModalLabel').html("");
+        $('#myModalLabel').html(asset_name + " for " + org_name);
+        $('#modal_footer').html("<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button><a href='<?php echo base_url()?>requests/delete/" + request_id + "' class='btn btn-danger' style='float: right;'> Delete </a>");
+    }
 </script>
 
 </body>

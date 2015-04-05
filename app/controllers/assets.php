@@ -32,6 +32,19 @@ class assets extends Controller {
         ));
     }
 
+    function delete($asset_id = null) {
+        $asset_delete = false;
+
+        if ($asset_id !== null) {
+            $asset_delete = $this->assets_model->delete_asset($asset_id);
+        }
+        session_start();
+        $_SESSION['asset_delete'] = $asset_delete;
+
+        $this->load_library('http_lib', 'http');
+        $this->http->redirect(base_url().'assets/view/');
+    }
+
     function list_json() {
         $assets_list = false;
 

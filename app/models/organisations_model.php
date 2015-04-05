@@ -26,12 +26,15 @@ class organisations_model extends Model {
         $this->DB->autocommit(false);
 
         $contact_id = $this->execute(
-            'INSERT INTO `contact_details`(`phone_no`, `email`, `mailing_list`) VALUES (?, ?, ?)',
-            'sss',
+            'INSERT INTO `contact_details`(`phone_no`, `email`, `mailing_list`, `mailing_address`, `latitude`, `longitude`) VALUES (?, ?, ?, ?, ?, ?)',
+            'ssssss',
             array(
                 &$contact['phone_no'],
                 &$contact['email'],
                 &$contact['mailing_list'],
+                &$contact['mailing_address'],
+                &$contact['latitude'],
+                &$contact['longitude'],
             )
         );
 
