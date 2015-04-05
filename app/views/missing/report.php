@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="<?php echo base_url(); ?>static/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="<?php echo base_url(); ?>static/css/sidebar.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>static/js/bootstrap.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
@@ -94,7 +96,7 @@
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>requests/">
+                <a href="#">
                     Requests
                 </a>
             </li>
@@ -136,7 +138,7 @@
                                         <label for="lname">Last name </label>
                                         <input type="text" class="form-control" placeholder="Enter Last Name" id="lname" name="person[lname]" required /><br>
                                         <label for="dob">Date of birth </label>
-                                        <input type="date" placeholder="Enter your DOB" class="form-control" id="dob" type="date" name="person[dob]" /><br>
+                                        <input type="text" placeholder="Enter your DOB (yyyy-mm-dd)" class="form-control" id="dob" name="person[dob]" pattern="(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}" /><br>
                                         <label class="sr-only" for="gender">Gender: </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>
@@ -157,11 +159,11 @@
                                     </div>
                                     <div class="panel-body" id="panelBody2">
                                         <label for="phone_no">Phone number </label>
-                                        <input placeholder="Enter Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" /><br>
+                                        <input placeholder="Enter Phone Number" class="form-control" id="phone_no" pattern="((\+\d{0,3})?\d[\s-]?)?[\(\[\s-]{0,2}?\d{1,3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}" name="person_contact[phone_no]" /><br>
                                         <label for="email">Email: </label>
-                                        <input class="form-control" type="email" placeholder="Enter your Email" id="email" type="email" name="person_contact[email]" /><br>
+                                        <input class="form-control" type="email" placeholder="Enter your Email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" name="person_contact[email]" /><br>
                                         <label for="mailing_list">Mailing list </label>
-                                        <input class="form-control" placeholder="Enter mailing-list" id="mailing_list" type="email" name="person_contact[mailing_list]" /><br>
+                                        <input class="form-control" placeholder="Enter mailing-list" id="mailing_list" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" name="person_contact[mailing_list]" /><br>
                                     </div>
                                 </div>
                             </fieldset>
@@ -175,9 +177,9 @@
                                         <label for="body_marks">Body marks </label><br>
                                         <textarea id="body_marks" class="form-control" placeholder="Enter Body Marks" name="person_detail[body_marks]"></textarea><br>
                                         <label for="height">Height </label>
-                                        <input id="height" placeholder="Enter Height" class="form-control" name="person_detail[height]" /><br>
+                                        <input id="height" placeholder="Enter Height (in cms)" class="form-control" name="person_detail[height]" min="0" max="190" type="number" step="0.01" /><br>
                                         <label for="weight">Weight </label>
-                                        <input class="form-control" placeholder="Enter Weight" id="weight" name="person_detail[weight]" /><br>
+                                        <input class="form-control" placeholder="Enter Weight (in kgs)" id="weight" name="person_detail[weight]" min="0" max="300" type="number" step="0.01" /><br>
                                         <label for="hair">Hair Style/Color </label>
                                         <input id="hair" placeholder="Enter Hair Style/Color" class="form-control" name="person_detail[hair]" /><br>
                                         <label for="eye_color">Eye color </label>
@@ -195,11 +197,11 @@
                                     </div>
                                     <div class="panel-body" id="panelBody4">
                                         <label for="w_phone_no">Phone number </label>
-                                        <input id="w_phone_no" class="form-control" placeholder="Enter Phone Number" name="contact_whom[phone_no]" required /><br>
+                                        <input id="w_phone_no" class="form-control" placeholder="Enter Phone Number" name="contact_whom[phone_no]" pattern="((\+\d{0,3})?\d[\s-]?)?[\(\[\s-]{0,2}?\d{1,3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}" required /><br>
                                         <label for="w_email">Email </label>
-                                        <input id="w_email" placeholder="Enter Email" class="form-control" type="email" name="contact_whom[email]" required /><br>
+                                        <input id="w_email" placeholder="Enter Email" class="form-control" type="email" name="contact_whom[email]" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" required /><br>
                                         <label for="w_mailing_list">Mailing list </label>
-                                        <input id="w_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="contact_whom[mailing_list]" /><br>
+                                        <input id="w_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" name="contact_whom[mailing_list]" /><br>
                                     </div>
                                 </div>
                             </fieldset>
@@ -254,6 +256,12 @@
         e.preventDefault();
         $("#panelBody4").toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
+    });
+
+    $(function() {
+        $( "#dob" ).datepicker({
+            dateFormat: "yy-mm-dd"
+        });
     });
 
 </script>
