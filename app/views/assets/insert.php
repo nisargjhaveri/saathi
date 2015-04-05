@@ -110,7 +110,7 @@
                             Add an Asset<br/>
                         </h1>
                         <br /><br />
-
+                    </div>
                         <?php
                         if ($is_success !== null) {
                             if ($is_success == true) {
@@ -146,8 +146,6 @@
                             </div>
                         </form>
                         <br>
-
-                    </div>
                 </div>
             </div>
         </div>
