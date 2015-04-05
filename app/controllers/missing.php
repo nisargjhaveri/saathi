@@ -50,7 +50,7 @@ class missing extends Controller {
         $reported = null;
 
 	$id = $_GET["id"];
-       	$con=mysqli_connect("localhost","root","tfghtfgh","saathi");
+       	$con=mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME);
 	$q = "SELECT * FROM persons where id= '$id'";
 	$result = mysqli_query($con,$q);
 	$tmp_id = 2*$id - 1;
