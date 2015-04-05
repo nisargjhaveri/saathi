@@ -141,9 +141,7 @@
                             echo "<li class='list-group-item'><b> Hair Color/Style: </b>" . $person['hair'] . '</li>';
                             echo "<li class='list-group-item'><b> Eye-Color: </b>" . $person['eye_color'] . '</li>';
                             echo "<li class='list-group-item'><b> Last Seen Location: </b>" . $person['last_seen'] . '</li>';
-			    echo "<li class='list-group-item'><b> Status: </b>" . $person['status'] . "<div class='btn btn-success'>Update Status As Found</div></li>";
-			    $per_id = $person['id'];
-			    echo "<a class='btn btn-info' href='update?id=$per_id'  style=' color: #ffffff;'>Update Details</a>";
+                            echo "<li class='list-group-item'><b> Status: </b>" . $person['status'] . '</li>';
                             echo "</ul></div></div>";
                         }
                     }
