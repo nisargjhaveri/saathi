@@ -56,4 +56,22 @@ class assets_model extends Model {
 
         return $assets_list;
     }
+
+    function delete_asset($asset_id) {
+        $asset_delete = false;
+
+        $delete_result = $this->execute(
+            'DELETE FROM `assets` WHERE id=?',
+            'i',
+            array(
+                &$asset_id
+            )
+        );
+
+        if ($delete_result && $this->DB->affected_rows === 1) {
+            $asset_delete = true;
+        }
+
+        return $asset_delete;
+    }
 }
