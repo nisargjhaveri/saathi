@@ -107,76 +107,51 @@
                 <div class="col-lg-12">
                     <div class="page-header">
                         <h1 style="text-align: center;">
-                            Assets Available<br/>
+                            Update an Asset<br/>
                         </h1>
                         <br /><br />
                     </div>
                     <?php
-                        session_start();
-                        if ((isset($_SESSION['asset_delete'])) && ($_SESSION['asset_delete'] === true)) {
-                            echo "<div class='alert alert-success'>Asset Successfully Deleted</div>";
-                            echo "<br />";
-                            unset($_SESSION['asset_delete']);
+                    if ($is_success !== null) {
+                        if ($is_success == true) {
+                            echo "<div class='alert alert-success'>Asset Updated</div>";
                         }
-
-                        foreach ($assets_list as $assets) {
-                    ?>
-                    <div class='panel panel-primary'>
-                        <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
-                            <b>Asset Name: <?php echo $assets['name']; ?> </b>
-
-                            <?php
-                                echo "<button class='btn btn-danger' style='float: right;' data-toggle='modal' data-target='#myModal' onclick='send_request(\"".$assets['name']."\", ".$assets['id'].")'> Delete </button>";
-                            ?>
-
-                            <a href="update?id=<?php echo $assets['id'] ?>">
-
-                                <div class='btn btn-success update' style='float: right;margin-right: 8px;'>Update</div>
-                            </a>
-
-                            <div class='btn btn-info show' style='float: right;margin-right: 8px;'>Show More</div>
-
-                        </div>
-                        <div class='panel-body' id='panelBody1' style='display: none;'>
-                            <b>Description: </b> <?php echo $assets['description']; ?>
-                        </div>
-                    </div>
-                    <?php
+                        else {
+                            echo "<div class='alert alert-danger'>Asset not updated</div>";
                         }
+                        echo "<br />";
+                    }
                     ?>
+
+                    <form action='' method='POST'>
+                        <fieldset>
+                            <input id="id" type="hidden" name="id" value="<?php echo $id ?>" required/><br>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
+                                    <b>Asset Details</b>
+                                    <div class="btn btn-info" id="show" style="float: right">Hide</div>
+                                </div>
+
+                                <div class="panel-body" id="panelBody">
+                                    <label for="name">Asset Name </label>
+                                    <input id="name" class="form-control" placeholder="Enter Asset Name" name='name' value="<?php echo $name ?>" required/><br>
+                                    <label for="desc">Description </label>
+                                    <input id="desc" class="form-control" placeholder="Enter Description" name='description' value="<?php echo $description ?>" /><br>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="col-sm-8 col-md-4">
+                        </div>
+                        <div class="col-sm-8 col-md-4" style="padding-top: 12px;">
+                            <input class="btn btn-success btn-block" type="submit" name="submit" value="Update Asset" />
+                        </div>
+                    </form>
+                    <br>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Confirmation Model -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Asset Name</h4>
-                </div>
-                <div class="modal-body">
-                    Are you Sure you Want to Delete this Asset?
-                </div>
-                <div class="modal-footer" id="modal_footer">
-                    Confirmation Buttons
-                </div>
-            </div>
-        </div>
-    </div>
-
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted" style="text-align: center">
-            Developed By Team Saathi <br/>
-            Powered By <a href="https://github.com/nisargjhaveri/saathi">Saathi</a>
-        </p>
-    </div>
-</footer>
 
 <!-- Toggle Script -->
 <script>
@@ -185,19 +160,13 @@
         $("#wrapper").toggleClass("toggled");
     });
 
-    $(".show").click(function(e) {
+    $("#show").click(function(e) {
         e.preventDefault();
-        $(this).closest('.panel').find('.panel-body').toggle("display");
+        $("#panelBody").toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
     });
-
-    function send_request(asset_name, asset_id) {
-        $('#modal_footer').html("");
-        $('#myModalLabel').html("");
-        $('#myModalLabel').html(asset_name);
-        $('#modal_footer').html("<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button><a href='<?php echo base_url()?>assets/delete/" + asset_id + "' class='btn btn-danger' style='float: right;'> Delete </a>");
-    }
 </script>
+
 
 </body>
 </html>
