@@ -36,7 +36,9 @@ class missing extends Controller {
 
     function valid() {
         if( !empty($_POST['person']['dob'])) {
-            $this->validateDate($_POST['person']['dob']);
+            if(!$this->validateDate($_POST['person']['dob'])) {
+                return false;
+            }
         }
 
         if( !empty($_POST['person_contact']['phone_no'])) {
@@ -83,7 +85,7 @@ class missing extends Controller {
         $reported = null;
 
         if ( isset($_POST['report']) ) {
-            if($this->valid($_POST['report'])) {
+            if($this->valid()) {
                 $reported = $this->missing_model->report(
                     $_POST['person'],
                     $_POST['person_contact'],
