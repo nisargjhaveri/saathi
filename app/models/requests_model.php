@@ -52,7 +52,8 @@ class requests_model extends Model {
             'SELECT
                 *,
             org.name as org,
-            asset.name as asset
+            asset.name as asset,
+            req.id as id
             FROM
                 `requests` req
                 JOIN `organisations` org ON req.organisation_id = org.id
@@ -62,6 +63,24 @@ class requests_model extends Model {
             $request_list = $request_details->fetch_all(MYSQLI_ASSOC);
         }
         return $request_list;
+    }
+
+    function delete_request($request_id) {
+        $request_delete = false;
+
+        $delete_result = $this->execute(
+            'DELETE FROM `requests` WHERE id=?',
+            'i',
+            array(
+                &$request_id
+            )
+        );
+
+        if ($delete_result && $this->DB->affected_rows === 1) {
+            $request_delete = true;
+        }
+
+        return $request_delete;
     }
 
 }
