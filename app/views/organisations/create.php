@@ -109,17 +109,29 @@
                 <div class="col-lg-12">
                     <div class="page-header">
                         <h1 style="text-align: center;">
-                            Create Organisation<br/>
+                            <?php
+                                if (isset($mode)) {
+                                    echo "$mode Organisation";
+                                } else {
+                                    echo "Create Organisation";
+                                }
+                            ?>
+                            <br/>
                         </h1>
                         <br /><br />
                     </div>
                         <?php
                             if ($created !== null) {
-                                if ($created == true) {
+                                if (($created == true) && ($mode === "Create")) {
                                     echo "<div class='alert alert-success'>New Organisation Created</div>";
-                                }
-                                else {
-                                    echo "<div class='alert alert-danger'>Organisation Creation failed</div>";
+                                } else if (($created == true) && ($mode === "Update")) {
+                                    echo "<div class='alert alert-success'>Organisation Updated</div>";
+                                } else {
+                                    if ($mode === "Create") {
+                                        echo "<div class='alert alert-danger'>Organisation Creation failed</div>";
+                                    } else if ($mode === "Update") {
+                                        echo "<div class='alert alert-danger'>Organisation Update failed</div>";
+                                    }
                                 }
                             echo "<br />";
                             }
@@ -133,19 +145,19 @@
                                     </div>
                                     <div class="panel-body" id="panelBody1">
                                         <label for="name">Name of Organisation </label>
-                                        <input class="form-control" placeholder="Enter Name of Organisation" id="name" name="org[name]" required /><br>
+                                        <input class="form-control" placeholder="Enter Name of Organisation" id="name" name="org[name]" <?php if($mode==="Update") echo "value='".$org_info['name']."'" ?> required /><br>
                                         <label for="home">Home Country </label>
-                                        <input class="form-control" placeholder="Enter Home Country" id="home" name="org[home]" required /><br>
+                                        <input class="form-control" placeholder="Enter Home Country" id="home" name="org[home]" <?php if($mode==="Update") echo "value='".$org_info['home_country']."'" ?> required /><br>
                                         <label for="phone_no">Phone number </label>
-                                        <input class="form-control" placeholder="Enter Phone Number" id="phone_no" name="contact[phone_no]" /><br>
+                                        <input class="form-control" placeholder="Enter Phone Number" id="phone_no" name="contact[phone_no]" <?php if($mode==="Update") echo "value='".$org_info['phone_no']."'" ?> /><br>
                                         <label for="email">Email </label>
-                                        <input class="form-control" placeholder="Enter Email" id="email" type="email" name="contact[email]" /><br>
+                                        <input class="form-control" placeholder="Enter Email" id="email" type="email" name="contact[email]" <?php if($mode==="Update") echo "value='".$org_info['email']."'" ?> /><br>
                                         <label for="mailing_list">Mailing list </label>
-                                        <input class="form-control" placeholder="Enter Mailing List" id="mailing_list" type="email" name="contact[mailing_list]" /><br>
+                                        <input class="form-control" placeholder="Enter Mailing List" id="mailing_list" type="email" name="contact[mailing_list]" <?php if($mode==="Update") echo "value='".$org_info['mailing_list']."'" ?> /><br>
                                         <label for="desc">Description </label><br>
-                                        <textarea class="form-control" placeholder="Enter Description" id="desc" name="org[desc]"></textarea><br>
+                                        <textarea class="form-control" placeholder="Enter Description" id="desc" name="org[desc]" ><?php if($mode==="Update") echo $org_info['description'] ?></textarea><br>
                                         <label for="founded">Founded </label>
-                                        <input class="form-control" placeholder="Enter Year Founded" id="founded" name="org[founded]" required /><br>
+                                        <input class="form-control" placeholder="Enter Year Founded" id="founded" name="org[founded]" <?php if($mode==="Update") echo "value='".$org_info['founded']."'" ?> required /><br>
                                     </div>
                                 </div>
                                 <!-- TODO Automatic adding of coordinates into DB after selection of location -->
@@ -172,7 +184,7 @@
                             <div class="col-sm-8 col-md-4">
                             </div>
                             <div class="col-sm-8 col-md-4" style="padding-top: 12px;">
-                                <input class="btn btn-success btn-block" type="submit" name="submit" value="Create Organisation" />
+                                <input class="btn btn-success btn-block" type="submit" name="submit" value="<?php echo $mode ?> Organisation" />
                             </div>
                         </form>
                 </div>
