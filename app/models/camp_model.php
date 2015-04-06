@@ -136,4 +136,21 @@ class camp_model extends Model {
         return $camp_list;
     }
 
+    function delete_asset($camp_id) {
+        $camp_delete = false;
+        echo $camp_id;
+        $delete_result = $this->execute(
+            'DELETE FROM `camps` WHERE id=?',
+            'i',
+            array(
+                &$camp_id
+            )
+        );
+
+        if ($delete_result && $this->DB->affected_rows === 1) {
+            $camp_delete = true;
+        }
+
+        return $camp_delete;
+    }
 }
