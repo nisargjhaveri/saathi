@@ -10,7 +10,7 @@ class missing extends Controller {
         $this->load_view('missing/index');
     }
 
-    function validatePhone($phone) {
+    private function validatePhone($phone) {
         $regex = "/^((\+\d{0,3})?\d[\s-]?)?[\(\[\s-]{0,2}?\d{1,3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}$/i";
 
         if( !preg_match( $regex, $phone)) {
@@ -20,17 +20,7 @@ class missing extends Controller {
         return true;
     }
 
-    function view() {
-        $missing_person_list = false;
-
-        $missing_person_list = $this->missing_model->get_missing();
-
-        $this->load_view('missing/view', array(
-            'missing_person_list' => $missing_person_list
-        ));
-    }
-
-    function validateDate($date) {
+    private function validateDate($date) {
         $dob = explode('-', $date);
         if (count($dob) == 3) {
             if (!checkdate($dob[1], $dob[2], $dob[0])) {
@@ -44,7 +34,7 @@ class missing extends Controller {
         return true;
     }
 
-    function valid() {
+    private function valid() {
         if( !empty($_POST['person']['dob'])) {
             if(!$this->validateDate($_POST['person']['dob'])) {
                 return false;
@@ -137,6 +127,16 @@ class missing extends Controller {
         else {
             $this->load_view('missing/search');
         }
+    }
+
+    function view() {
+        $missing_person_list = false;
+
+        $missing_person_list = $this->missing_model->get_missing();
+
+        $this->load_view('missing/view', array(
+            'missing_person_list' => $missing_person_list
+        ));
     }
 
     function img($id) {
