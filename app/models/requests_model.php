@@ -83,4 +83,45 @@ class requests_model extends Model {
         return $request_delete;
     }
 
+    function supply($supply_details){
+	$supply_details['date'] = date("y/m/d");
+	$supply_id = $this->execute(
+	    'UPDATE `requests` SET `supplier_id` = ?, `fulfill_date` = ? WHERE `id` = ?',
+	    'isi',
+	    array(
+                &$supply_details['supplier_id'],
+		&$supply_details['date'],
+		&$supply_details['request_id'],
+		)
+
+        );
+	if ($supply_id)
+	{
+		$supply_id = $this->DB->affected_rows;
+	}
+	else
+	{
+		return false;
+	}
+	return $supply_id;
+    }
+
+    function update($update_details){
+	$update_id = $this->execute(
+	    'UPDATE `requests` SET `asset_id` = ? WHERE `id` = ?','ii',
+	    array(
+	        &$update_details['asset_id'],
+		&$update_details['request_id'],
+		 ));
+	if($update_id)
+	{
+		$update_id = $this->DB->affected_rows;
+	}
+	else
+	{
+		return false;
+	}
+	return $update_id;
+    }
+
 }
