@@ -20,6 +20,16 @@ class missing extends Controller {
         return true;
     }
 
+    function view() {
+        $missing_person_list = false;
+
+        $missing_person_list = $this->missing_model->get_missing();
+
+        $this->load_view('missing/view', array(
+            'missing_person_list' => $missing_person_list
+        ));
+    }
+
     function validateDate($date) {
         $dob = explode('-', $date);
         if (count($dob) == 3) {
