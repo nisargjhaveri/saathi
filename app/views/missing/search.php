@@ -84,7 +84,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>camp/">
                     Camps
                 </a>
             </li>
