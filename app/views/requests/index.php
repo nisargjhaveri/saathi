@@ -125,6 +125,12 @@
                             <div class="btn btn-primary">
                                 <a style="color: #ffffff" href="view">View Requests</a>
                             </div>
+			    <div class="btn btn-primary">
+			        <a style="color: #ffffff" href="supply">Supply Requests</a>
+			    </div>
+			    <div class="btn btn-primary">
+			        <a style="color: #ffffff" href="update">Update Requests</a>
+			    </div>
                         </div>
                     </div>
                 </div>
