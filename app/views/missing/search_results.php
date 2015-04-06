@@ -126,7 +126,8 @@
                             echo "<div class='panel panel-primary'>
                                     <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
                                         <b>Name: " . $person['fname'] . " " . $person['lname'] . "</b>
-                                        <div class='btn btn-info show' style='float: right;'>Show More</div>
+					<div class='btn btn-info show' style='float: right;'>Show More</div>
+					<a class='btn btn-success' href='". base_url(). "missing/update/". $person['id'] ."' style='float: right;' '> Update </a>
                                     </div>";
                             echo "<div class='panel-body' style='display: none'>";
                             echo "<ul class='list-group'>";

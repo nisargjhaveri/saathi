@@ -125,8 +125,22 @@
                                 echo "<div class='alert alert-danger'> Submission failed </div>";
                             }
                             echo "<br><br>";
-                        }
-                        ?>
+			}
+			if ($created !== null) {
+			     if (($created == true) && ($mode === "Create")) {
+				  echo "<div class='alert alert-success'>Reported Successfully !!</div>";
+			     } else if (($created == true) && ($mode === "Update")) {
+				  echo "<div class='alert alert-success'>Details Updated !!</div>";
+			     } else {
+				  if ($mode === "Create") {
+				       echo "<div class='alert alert-danger'>Report Creation failed</div>";
+				  } else if ($mode === "Update") {
+				       echo "<div class='alert alert-danger'>Report Update failed</div>";
+				  }
+			     }
+			     echo "<br />";
+			}
+			?>
 
                         <form action="" method="POST">
                             <fieldset>
@@ -137,18 +151,18 @@
                                     </div>
                                     <div class="panel-body">
                                         <label for="fname">First name </label>
-                                        <input id="fname" type="text" class="form-control" name="person[fname]" placeholder="Enter First Name" required /><br>
+					<input id="fname" type="text" class="form-control" name="person[fname]" placeholder="Enter First Name" <?php if($mode==="Update") echo "value='".$per_info['fname']."'" ?> required /><br>
                                         <label for="lname">Last name </label>
-                                        <input type="text" class="form-control" placeholder="Enter Last Name" id="lname" name="person[lname]" required /><br>
+					<input type="text" class="form-control" placeholder="Enter Last Name" id="lname" name="person[lname]" <?php if($mode==="Update") echo "value='".$per_info['lname']."'" ?> required /><br>
                                         <label for="dob">Date of birth </label>
-                                        <input type="text" placeholder="Enter your DOB (yyyy-mm-dd)" class="form-control" id="dob" name="person[dob]" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" /><br>
+					<input type="text" placeholder="Enter your DOB (yyyy-mm-dd)" class="form-control" id="dob" name="person[dob]" <?php if($mode==="Update") echo "value='".$per_info['dob']."'" ?> pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" /><br>
                                         <label class="sr-only" for="gender">Gender: </label>
                                         <div class="dropdown">
-                                            <select class="dropdown-header" id="gender" name="person[gender]" required>
-                                                <option class="dropdown-toggle" value="" disabled selected>Select gender</option>
-                                                <option class="dropdown-header" value="F">Female</option>
-                                                <option class="dropdown-header" value="M">Male</option>
-                                                <option class="dropdown-header" value="O">Other</option>
+					<select class="dropdown-header" id="gender" name="person[gender]" required>
+					<option class="dropdown-toggle" <?php if($per_info['gender'] == ''){echo("selected");}?> value="">Select gender</option>
+					<option class="dropdown-header" <?php if($per_info['gender'] == 'F'){echo("selected");}?> value="F">Female</option>
+					<option class="dropdown-header" <?php if($per_info['gender'] == 'M'){echo("selected");}?> value="M">Male</option>
+					<option class="dropdown-header" <?php if($per_info['gender'] == 'O'){echo("selected");}?> value="O">Other</option>
                                             </select><br>
                                         </div>
                                     </div>
@@ -162,11 +176,11 @@
                                     </div>
                                     <div class="panel-body">
                                         <label for="phone_no">Phone number </label>
-                                        <input placeholder="Enter Phone Number" class="form-control" id="phone_no" pattern="((\+\d{0,3})?\d[\s-]?)?[\(\[\s-]{0,2}?\d{1,3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}" name="person_contact[phone_no]" /><br>
+					<input placeholder="Enter Phone Number" class="form-control" id="phone_no" pattern="((\+\d{0,3})?\d[\s-]?)?[\(\[\s-]{0,2}?\d{1,3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}" <?php if($mode==="Update") echo "value='".$per_info['phone_no']."'" ?> name="person_contact[phone_no]" /><br>
                                         <label for="email">Email: </label>
-                                        <input class="form-control" type="email" placeholder="Enter your Email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" name="person_contact[email]" /><br>
+					<input class="form-control" type="email" placeholder="Enter your Email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" <?php if($mode==="Update") echo "value='".$per_info['email']."'" ?> name="person_contact[email]" /><br>
                                         <label for="mailing_list">Mailing list </label>
-                                        <input class="form-control" placeholder="Enter mailing-list" id="mailing_list" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" name="person_contact[mailing_list]" /><br>
+					<input class="form-control" placeholder="Enter mailing-list" id="mailing_list" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" <?php if($mode==="Update") echo "value='".$per_info['mailing_list']."'" ?> name="person_contact[mailing_list]" /><br>
                                     </div>
                                 </div>
                             </fieldset>
@@ -178,17 +192,17 @@
                                     </div>
                                     <div class="panel-body">
                                         <label for="body_marks">Body marks </label><br>
-                                        <textarea id="body_marks" class="form-control" placeholder="Enter Body Marks" name="person_detail[body_marks]"></textarea><br>
+					<textarea id="body_marks" class="form-control" placeholder="Enter Body Marks" name="person_detail[body_marks]"><?php if($mode==="Update") echo $missing_per_info['body_marks'] ?></textarea><br>
                                         <label for="height">Height </label>
-                                        <input id="height" placeholder="Enter Height (in cms)" class="form-control" name="person_detail[height]" min="0" max="190" type="number" step="0.01" /><br>
+					<input id="height" placeholder="Enter Height (in cms)" class="form-control" name="person_detail[height]" min="0" max="190" type="number" step="0.01" <?php if($mode==="Update") echo "value='".$missing_per_info['height']."'" ?> /><br>
                                         <label for="weight">Weight </label>
-                                        <input class="form-control" placeholder="Enter Weight (in kgs)" id="weight" name="person_detail[weight]" min="0" max="300" type="number" step="0.01" /><br>
+					<input class="form-control" placeholder="Enter Weight (in kgs)" id="weight" name="person_detail[weight]" min="0" max="300" type="number" step="0.01" <?php if($mode==="Update") echo "value='".$missing_per_info['weight']."'" ?> /><br>
                                         <label for="hair">Hair Style/Color </label>
-                                        <input id="hair" placeholder="Enter Hair Style/Color" class="form-control" name="person_detail[hair]" /><br>
+					<input id="hair" placeholder="Enter Hair Style/Color" class="form-control" name="person_detail[hair]" <?php if($mode==="Update") echo "value='".$missing_per_info['hair']."'" ?> /><br>
                                         <label for="eye_color">Eye color </label>
-                                        <input id="eye_color" class="form-control" placeholder="Enter Eye color" name="person_detail[eye_color]" /><br>
+					<input id="eye_color" class="form-control" placeholder="Enter Eye color" name="person_detail[eye_color]" <?php if($mode==="Update") echo "value='".$missing_per_info['eye_color']."'" ?> /><br>
                                         <label for="last_seen">Last seen (When, where, condition) </label><br>
-                                        <textarea id="last_seen" placeholder="Enter Last Seen Location" class="form-control" name="person_detail[last_seen]"></textarea><br>
+					<textarea id="last_seen" placeholder="Enter Last Seen Location" class="form-control" name="person_detail[last_seen]"><?php if($mode==="Update") echo $missing_per_info['last_seen'] ?></textarea><br>
                                     </div>
                                 </div>
                             </fieldset>
@@ -200,11 +214,11 @@
                                     </div>
                                     <div class="panel-body">
                                         <label for="w_phone_no">Phone number </label>
-                                        <input id="w_phone_no" class="form-control" placeholder="Enter Phone Number" name="contact_whom[phone_no]" pattern="((\+\d{0,3})?\d[\s-]?)?[\(\[\s-]{0,2}?\d{1,3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}" required /><br>
+					<input id="w_phone_no" class="form-control" placeholder="Enter Phone Number" name="contact_whom[phone_no]" pattern="((\+\d{0,3})?\d[\s-]?)?[\(\[\s-]{0,2}?\d{1,3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}" <?php if($mode==="Update") echo "value='".$missing_per_info['phone_no']."'" ?> required /><br>
                                         <label for="w_email">Email </label>
-                                        <input id="w_email" placeholder="Enter Email" class="form-control" type="email" name="contact_whom[email]" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" required /><br>
+					<input id="w_email" placeholder="Enter Email" class="form-control" type="email" name="contact_whom[email]" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" <?php if($mode==="Update") echo "value='".$missing_per_info['email']."'" ?> required /><br>
                                         <label for="w_mailing_list">Mailing list </label>
-                                        <input id="w_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" name="contact_whom[mailing_list]" /><br>
+					<input id="w_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" name="contact_whom[mailing_list]" <?php if($mode==="Update") echo "value='".$missing_per_info['mailing_list']."'" ?> /><br>
                                     </div>
                                 </div>
                                 <!-- TODO Automatic adding of coordinates into DB after selection of location -->
@@ -215,13 +229,13 @@
                                     </div>
                                     <div class="panel-body">
                                         <label for="my-address"><b>Landmark Nearest to Last Seen Location</b></label>
-                                        <input type="text" class="form-control" placeholder="Enter Nearest Landmark" id="my-address" name="person_contact[mailing_address]" />
+					<input type="text" class="form-control" placeholder="Enter Nearest Landmark" id="my-address" name="person_contact[mailing_address]" <?php if($mode==="Update") echo "value='".$per_info['mailing_address']."'" ?> />
                                         <br />
                                         <center>
                                             <div class="btn btn-success" id="getCords" onclick="codeAddress();">Show on Map</div>
                                             <br />
-                                            <input name="person_contact[latitude]" id="lat" value="" style="visibility: hidden"/>
-                                            <input name="person_contact[longitude]" id="long" value="" style="visibility: hidden"/>
+					    <input name="person_contact[latitude]" id="lat" style="visibility: hidden" <?php if($mode==="Update") echo "value='".$per_info['latitude']."'" ?> />
+					    <input name="person_contact[longitude]" id="long" style="visibility: hidden" <?php if($mode==="Update") echo "value='".$per_info['longitude']."'" ?> />
 
                                             <div id="map_canvas" style="width: 500px; height: 300px"></div>
                                         </center>
