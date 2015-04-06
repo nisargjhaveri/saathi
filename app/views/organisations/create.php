@@ -149,15 +149,15 @@
                                         <label for="home">Home Country </label>
                                         <input class="form-control" placeholder="Enter Home Country" id="home" name="org[home]" <?php if($mode==="Update") echo "value='".$org_info['home_country']."'" ?> required /><br>
                                         <label for="phone_no">Phone number </label>
-                                        <input class="form-control" placeholder="Enter Phone Number" id="phone_no" name="contact[phone_no]" <?php if($mode==="Update") echo "value='".$org_info['phone_no']."'" ?> /><br>
+                                        <input class="form-control" placeholder="Enter Phone Number" id="phone_no" name="contact[phone_no]" pattern="((\+\d{0,3})?\d[\s-]?)?[\(\[\s-]{0,2}?\d{1,3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}" <?php if($mode==="Update") echo "value='".$org_info['phone_no']."'" ?> /><br>
                                         <label for="email">Email </label>
-                                        <input class="form-control" placeholder="Enter Email" id="email" type="email" name="contact[email]" <?php if($mode==="Update") echo "value='".$org_info['email']."'" ?> /><br>
+                                        <input class="form-control" placeholder="Enter Email" id="email" type="email" name="contact[email]" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" <?php if($mode==="Update") echo "value='".$org_info['email']."'" ?> /><br>
                                         <label for="mailing_list">Mailing list </label>
-                                        <input class="form-control" placeholder="Enter Mailing List" id="mailing_list" type="email" name="contact[mailing_list]" <?php if($mode==="Update") echo "value='".$org_info['mailing_list']."'" ?> /><br>
+                                        <input class="form-control" placeholder="Enter Mailing List" id="mailing_list" type="email" name="contact[mailing_list]" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" <?php if($mode==="Update") echo "value='".$org_info['mailing_list']."'" ?> /><br>
                                         <label for="desc">Description </label><br>
                                         <textarea class="form-control" placeholder="Enter Description" id="desc" name="org[desc]" ><?php if($mode==="Update") echo $org_info['description'] ?></textarea><br>
                                         <label for="founded">Founded </label>
-                                        <input class="form-control" placeholder="Enter Year Founded" id="founded" name="org[founded]" <?php if($mode==="Update") echo "value='".$org_info['founded']."'" ?> required /><br>
+                                        <input class="form-control" placeholder="Enter Year Founded" id="founded" name="org[founded]" pattern="\d{4}" min="0" <?php if($mode==="Update") echo "value='".$org_info['founded']."'" ?> required /><br>
                                     </div>
                                 </div>
                                 <!-- TODO Automatic adding of coordinates into DB after selection of location -->
