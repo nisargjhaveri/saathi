@@ -23,23 +23,25 @@ class camp_model extends Model {
     }
 
     function add_new($name, $organisation_id, $population, $volunteers, $status, $fname, $lname, $dob, $gender,
-     $ch_phone_no, $ch_email, $ch_mailing_list, $ch_mailing_address, $ch_gis_url,
-     $phone_no, $email, $mailing_list, $mailing_address, $gis_url) {
+     $ch_phone_no, $ch_email, $ch_mailing_list, $ch_mailing_address,
+     $phone_no, $email, $mailing_list, $mailing_address) {
         $this->DB->autocommit(false);
         //camp head contact details
 
+        $longitude = 0; // fetch from controllers
+        $latitude = 0;  // fetch from controllers
         $camp_head_cd = $this->execute(
-            'INSERT INTO `contact_details`(`phone_no`, `email`, `mailing_list`, `mailing_address`, `gis_url`) VALUES (?, ?, ?, ?, ?)',
-            'sssss',
+            'INSERT INTO `contact_details`(`phone_no`, `email`, `mailing_list`, `mailing_address`, `longitude`, `latitude`) VALUES (?, ?, ?, ?, ?, ?)',
+            'ssssss',
             array(
                 &$ch_phone_no,
                 &$ch_email,
                 &$ch_mailing_list,
                 &$ch_mailing_address,
-                &$ch_gis_url,
+                &$latitude,
+                &$longitude,
             )
         );
-
         if ($camp_head_cd) {
             $camp_head_cd = $camp_head_cd->insert_id;
         }
@@ -69,14 +71,15 @@ class camp_model extends Model {
         }
 
         $contact_id = $this->execute(
-            'INSERT INTO `contact_details`(`phone_no`, `email`, `mailing_list`, `mailing_address`, `gis_url`) VALUES (?, ?, ?, ?, ?)',
-            'sssss',
+            'INSERT INTO `contact_details`(`phone_no`, `email`, `mailing_list`, `mailing_address`, `longitude`, `latitude`) VALUES (?, ?, ?, ?, ?, ?)',
+            'ssssss',
             array(
                 &$phone_no,
                 &$email,
                 &$mailing_list,
                 &$mailing_address,
-                &$gis_url,
+                &$latitude,
+                &$longitude,
             )
         );
 
