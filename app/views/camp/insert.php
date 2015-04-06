@@ -11,6 +11,8 @@
     <script src="<?php echo base_url(); ?>static/js/vendor/typeahead.bundle.min.js"></script>
     <script src="<?php echo base_url(); ?>static/js/autocomplete.js"></script>
     <link href="<?php echo base_url(); ?>static/css/vendor/typeaheadjs.css" rel="stylesheet" media="screen">
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+    <script src="<?php echo base_url(); ?>static/js/locate.js"></script>
 
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
@@ -195,8 +197,27 @@
                                         <input id="email" placeholder="Enter Email" class="form-control" type="email" name="email" required /><br>
                                         <label for="mailing_list">Mailing list </label>
                                         <input id="mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="mailing_list" /><br>
-                                        <label for="mailing_address">Mailing address </label>
-                                        <textarea id="mailing_address" class="form-control" placeholder="Enter Mailing Address" name="mailing_address" ></textarea><br>
+                                    </div>
+                                </div>
+
+                                <!-- TODO Automatic adding of coordinates into DB after selection of location -->
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
+                                        <b>Camp Location</b>
+                                        <div class="btn btn-info show" style="float: right">Hide</div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <label for="my-address"><b>Camp Location</b></label>
+                                        <input type="text" class="form-control" placeholder="Enter Camp Location" id="my-address" name="mailing_address" />
+                                        <br />
+                                        <center>
+                                            <div class="btn btn-success" id="getCords" onclick="codeAddress();">Show on Map</div>
+                                            <br />
+                                            <input name="latitude" id="lat" value="" style="visibility: hidden"/>
+                                            <input name="longitude" id="long" value="" style="visibility: hidden"/>
+
+                                            <div id="map_canvas" style="width: 500px; height: 300px"></div>
+                                        </center>
                                     </div>
                                 </div>
                             </fieldset>
