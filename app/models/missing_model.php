@@ -83,8 +83,8 @@ class missing_model extends Model {
         }
 
         $missing_person = $this->execute(
-            'INSERT INTO `missing_persons`(`person_id`, `body_marks`, `height`, `weight`, `hair`, `eye_color`, `last_seen`, `contact_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
-            'issssssi',
+            'INSERT INTO `missing_persons`(`person_id`, `body_marks`, `height`, `weight`, `hair`, `eye_color`, `last_seen`, `blood_group`, `contact_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            'isssssssi',
             array(
                 &$person_id,
                 &$person_detail['body_marks'],
@@ -93,6 +93,7 @@ class missing_model extends Model {
                 &$person_detail['hair'],
                 &$person_detail['eye_color'],
                 &$person_detail['last_seen'],
+                &$person_detail['blood_group'],
                 &$contact_id
             )
         );

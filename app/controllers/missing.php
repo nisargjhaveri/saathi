@@ -20,6 +20,16 @@ class missing extends Controller {
         return true;
     }
 
+    private function validateBlood($blood_group) {
+        $regex = "/^(A|B|AB|O)(\+|-)$/i";
+
+        if( !preg_match( $regex, $blood_group)) {
+            return false;
+        }
+
+        return true;
+    }
+
     private function validateDate($date) {
         $dob = explode('-', $date);
         if (count($dob) == 3) {
@@ -73,6 +83,12 @@ class missing extends Controller {
 
         if ( !empty($_POST['contact_whom']['mailing_list'])) {
             if (!filter_var($_POST['contact_whom']['mailing_list'], FILTER_VALIDATE_EMAIL)) {
+                return false;
+            }
+        }
+
+        if ( !empty($_POST['person_detail']['blood_group'])) {
+            if(!$this->validateBlood($_POST['person_detail']['blood_group'])) {
                 return false;
             }
         }
