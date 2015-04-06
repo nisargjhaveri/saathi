@@ -176,14 +176,20 @@ class organisations_model extends Model {
             SET
                 phone_no=?,
                 email=?,
-                mailing_list=?
+                mailing_list=?,
+                mailing_address=?,
+                longitude=?,
+                latitude=?
             WHERE
                 id=?
-            ', 'sssi',
+            ', 'ssssssi',
             array(
                 &$contact['phone_no'],
                 &$contact['email'],
                 &$contact['mailing_list'],
+                &$contact['mailing_address'],
+                &$contact['longitude'],
+                &$contact['latitude'],
                 &$contact_id
             )
         );

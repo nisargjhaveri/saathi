@@ -168,14 +168,18 @@
                                     </div>
                                     <div class="panel-body">
                                         <label for="my-address"><b>Address</b></label>
-                                        <input type="text" class="form-control" placeholder="Enter Address" id="my-address" name="contact[mailing_address]" />
+                                        <input type="text" class="form-control" placeholder="Enter Address" id="my-address" name="contact[mailing_address]" <?php if($mode==="Update") echo "value='".$org_info['mailing_address']."'" ?> />
                                         <br />
                                         <center>
                                             <div class="btn btn-success" id="getCords" onclick="codeAddress();">Show on Map</div>
                                             <br />
-                                            <input name="contact[latitude]" id="lat" value="" style="visibility: hidden"/>
-                                            <input name="contact[longitude]" id="long" value="" style="visibility: hidden"/>
-
+                                            <input name="contact[latitude]" id="lat" <?php if($mode==="Update") echo "value='".$org_info['latitude']."'" ?> style="visibility: hidden"/>
+                                            <input name="contact[longitude]" id="long" <?php if($mode==="Update") echo "value='".$org_info['longitude']."'" ?> style="visibility: hidden"/>
+                                            <?php
+                                                if($mode==="Update") {
+                                                    echo "<script>initializeView();</script>";
+                                                }
+                                            ?>
                                             <div id="map_canvas" style="width: 500px; height: 300px"></div>
                                         </center>
                                     </div>
