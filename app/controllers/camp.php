@@ -42,5 +42,15 @@ class camp extends Controller {
         ));
 
     }
+    function view() {
+        
+        $camp_list = false;
+        $camp_list = $this->camp_model->get_camps();
+            
+        $this->load_view('camp/view', array(
+            'camp_list' => $camp_list
+        ));
+    }
+
 
 }
