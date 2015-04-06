@@ -43,14 +43,26 @@ class camp extends Controller {
 
     }
     function view() {
-        
+
         $camp_list = false;
         $camp_list = $this->camp_model->get_camps();
-            
+
         $this->load_view('camp/view', array(
             'camp_list' => $camp_list
         ));
     }
 
+    function delete($camp_id = null) {
+        $camp_delete = false;
+
+        if ($camp_id !== null) {
+            $camp_delete = $this->camp_model->delete_camp($camp_id);
+        }
+        session_start();
+        $_SESSION['camp_delete'] = $camp_delete;
+
+        $this->load_library('http_lib', 'http');
+        $this->http->redirect(base_url().'camp/view/');
+    }
 
 }

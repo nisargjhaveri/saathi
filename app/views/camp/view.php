@@ -82,19 +82,19 @@
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>camp/">
                     Camps
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>assets/">
                     Assets
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="<?php echo base_url(); ?>requests/">
                     Requests
                 </a>
             </li>
@@ -110,12 +110,20 @@
                            Camps List<br/>
                         </h1>
                         <br /><br />
-
+                    </div>
                         <?php
+                            session_start();
+                            if ((isset($_SESSION['camp_delete'])) && ($_SESSION['camp_delete'] === true)) {
+                                echo "<div class='alert alert-success'>Camp Successfully Deleted</div>";
+                                echo "<br />";
+                                unset($_SESSION['camp_delete']);
+                            }
+
                             foreach ($camp_list as $list) {
                                 echo "<div class='panel panel-primary'>
                                       <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
                                         <b>Camp Name: " . $list['name'] . "</b>
+                                        <button class='btn btn-danger' style='float: right;' data-toggle='modal' data-target='#myModal' onclick='send_request(\"".$list['name']."\", ".$list['c_id'].")'> Delete </button>
                                         <div class='btn btn-info show' style='float: right;'>Show More</div>
                                       </div>
                                       ";
@@ -126,14 +134,37 @@
                                 echo "<hr></div></div>";
                             }
                         ?>
-
-
-                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Confirmation Model -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Camp Name</h4>
+                </div>
+                <div class="modal-body">
+                    Are you Sure you Want to Delete this Camp?
+                </div>
+                <div class="modal-footer" id="modal_footer">
+                    Confirmation Buttons
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<footer class="footer">
+    <div class="container">
+        <p class="text-muted" style="text-align: center">
+            Developed By Team Saathi <br/>
+            Powered By <a href="https://github.com/nisargjhaveri/saathi">Saathi</a>
+        </p>
+    </div>
+</footer>
 
 <!-- Toggle Script -->
 <script>
@@ -147,6 +178,13 @@
         $(this).closest('.panel').find('.panel-body').toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
     });
+
+    function send_request(camp_name, camp_id) {
+        $('#modal_footer').html("");
+        $('#myModalLabel').html("");
+        $('#myModalLabel').html(camp_name);
+        $('#modal_footer').html("<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button><a href='<?php echo base_url()?>camp/delete/" + camp_id + "' class='btn btn-danger' style='float: right;'> Delete </a>");
+    }
   
 </script>
 
