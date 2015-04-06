@@ -126,7 +126,7 @@
                                         <label for="lname">Last name </label>
                                         <input type="text" class="form-control" placeholder="Enter the Last Name" id="lname" name="person[lname]" /><br>
                                         <label for="dob">Date of birth </label>
-                                        <input type="text" placeholder="Enter the DOB (yyyy-mm-dd)" class="form-control" id="dob" name="person[dob]" pattern="(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}" /><br>
+                                        <input type="text" placeholder="Enter the DOB (yyyy-mm-dd)" class="form-control" id="dob" name="person[dob]" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" /><br>
                                         <label class="sr-only" for="gender">Gender: </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>
@@ -147,9 +147,9 @@
                                     </div>
                                     <div class="panel-body" id="panelBody2">
                                         <label for="phone_no">Phone number </label>
-                                        <input placeholder="Enter the Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" pattern="\d{10}" /><br>
+                                        <input placeholder="Enter the Phone Number" class="form-control" id="phone_no" name="person_contact[phone_no]" pattern="((\+\d{0,3})?\d[\s-]?)?[\(\[\s-]{0,2}?\d{1,3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}" /><br>
                                         <label for="email">Email </label>
-                                        <input class="form-control" type="email" placeholder="Enter the Email" id="email" type="email" name="person_contact[email]" /><br>
+                                        <input class="form-control" type="email" placeholder="Enter the Email" id="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" name="person_contact[email]" /><br>
                                     </div>
                                 </div>
                             </fieldset>
