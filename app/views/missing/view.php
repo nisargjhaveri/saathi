@@ -8,7 +8,15 @@
     <link href="<?php echo base_url(); ?>static/css/sidebar.css" rel="stylesheet" media="screen">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>static/js/bootstrap.js"></script>
-
+    <style>
+        .person-img {
+            max-width: 100%;
+            max-height: 200px;
+        }
+        .table.missing-list tbody>tr>td {
+            vertical-align: middle;
+        }
+    </style>
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
     <div class="container-fluid">
@@ -112,11 +120,12 @@
                     </div>
                         <?php
                             echo "<div class='table-responsive'>";
-                            echo "<table style='text-align:center;' class='table table-striped'>";
+                            echo "<table style='text-align:center;' class='table table-striped missing-list'>";
                             echo "<tr class='active h3'>";
-                            echo "<td><b>Person Name</b></td>";
-                            echo "<td><b>Gender</b></td>";
-                            echo "<td><b>Date of Birth</b></td>";
+                            echo "<th>Photo</th>";
+                            echo "<th>Person Name</th>";
+                            echo "<th>Gender</th>";
+                            echo "<th>Date of Birth</th>";
                             echo "</tr>";
                             foreach ($missing_person_list as $list) {
                                 if ($list['gender'] === "M")
@@ -126,6 +135,7 @@
                                 else if ($list['gender'] === "O")
                                     $gender = "Other";
                                 echo "<tr class='h4'>";
+                                echo "<td>".($list['img'] ? "<img class='person-img' src='" . base_url() . "missing/img/" . $list['id'] . "' />" : '')."</td>";
                                 echo "<td>".$list['fname']." ".$list['lname']."</td>";
                                 echo "<td>".$gender."</td>";
                                 echo "<td>".$list['dob']."</td>";
@@ -133,7 +143,7 @@
                             }
                             echo "</table>";
                             echo "</div>";
-                        ?>  
+                        ?>
                 </div>
             </div>
         </div>
