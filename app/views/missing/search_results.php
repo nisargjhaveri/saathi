@@ -10,7 +10,12 @@
     <script src="<?php echo base_url(); ?>static/js/bootstrap.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
     <script src="<?php echo base_url(); ?>static/js/locate.js"></script>
-
+    <style>
+        .person-img {
+            max-width: 100%;
+            max-height: 200px;
+        }
+    </style>
 </head>
 <nav class="navbar navbar-inverse navbar-fixed-top" id="navbar" role="navigation" style="visibility: visible">
     <div class="container-fluid">
@@ -134,6 +139,7 @@
                             echo "<li class='list-group-item'><b> Last Name: </b>" . $person['lname'] . "</li>";
                             echo "<li class='list-group-item'><b> Gender: </b>" . $person['gender'] . '</li>';
                             echo "<li class='list-group-item'><b> Date of Birth: </b>" . $person['dob'] . '</li>';
+                            echo $person['img'] ? "<li class='list-group-item'><img class='person-img' src='" . base_url() . "missing/img/" . $person['id'] . "' /></li>" : '';
                             echo "<li class='list-group-item'><b> Phone Number: </b>" . $person['phone_no'] . '</li>';
                             echo "<li class='list-group-item'><b> Email: </b>" . $person['email'] . '</li>';
                             echo "<li class='list-group-item'><b> Mailing List: </b>" . $person['mailing_list'] . '</li>';
