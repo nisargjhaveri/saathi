@@ -26,10 +26,8 @@ class camp_model extends Model {
      $ch_phone_no, $ch_email, $ch_mailing_list, $ch_mailing_address,
      $phone_no, $email, $mailing_list, $mailing_address, $latitude, $longitude) {
         $this->DB->autocommit(false);
-        //camp head contact details
 
-        //$longitude = 0; // fetch from controllers
-        //$latitude = 0;  // fetch from controllers
+        //camp head contact details
         $camp_head_cd = $this->execute(
             'INSERT INTO `contact_details`(`phone_no`, `email`, `mailing_list`, `mailing_address`, `longitude`, `latitude`) VALUES (?, ?, ?, ?, ?, ?)',
             'ssssss',
