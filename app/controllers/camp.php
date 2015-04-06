@@ -33,7 +33,9 @@ class camp extends Controller {
                 $_POST['phone_no'],
                 $_POST['email'],
                 $_POST['mailing_list'],
-                $_POST['mailing_address']
+                $_POST['mailing_address'],
+                $_POST['latitude'],
+                $_POST['longitude']
             );
         }
 
@@ -43,10 +45,10 @@ class camp extends Controller {
 
     }
     function view() {
-
+        
         $camp_list = false;
         $camp_list = $this->camp_model->get_camps();
-
+            
         $this->load_view('camp/view', array(
             'camp_list' => $camp_list
         ));
