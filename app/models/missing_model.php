@@ -104,6 +104,21 @@ class missing_model extends Model {
         return $this->DB->commit();
     }
 
+    function get_missing() {
+        $missing_person_list = false;
+        $missing_person_details = $this->DB->query(
+            'SELECT
+                *
+             FROM
+                `missing_persons` m
+                JOIN `persons` p ON m.person_id = p.id
+            ');
+        if ($missing_person_details) {
+            $missing_person_list = $missing_person_details->fetch_all(MYSQLI_ASSOC);
+        }
+        return $missing_person_list;
+    }
+
     function search($person, $person_contact) {
         $search_results = $this->execute(
             'SELECT

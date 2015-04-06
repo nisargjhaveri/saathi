@@ -82,7 +82,7 @@
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>camp/">
+                <a href="#">
                     Camps
                 </a>
             </li>
@@ -107,43 +107,38 @@
                 <div class="col-lg-12">
                     <div class="page-header">
                         <h1 style="text-align: center;">
-                            Missing Person Registry<br/>
-                            <small>Report about your loved ones or search in our records</small>
+                            Missing Persons List<br/>
                         </h1>
-                        <br /><br />
-                        <div class="panel panel-primary">
-                            <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
-                                <b>Are you looking for your loved ones?</b>
-                                <div class="btn btn-info" id="show" style="float: right">Hide</div>
-                            </div>
-                            <div class="panel-body" id="panelBody">
-                                <div class="btn btn-primary">
-                                    <a style="color: #ffffff" href="report">Report a Missing Person</a>
-                                </div><br /><br />
-                                <div class="btn btn-primary">
-                                    <a style="color: #ffffff; float: right" href="search">Search in our Records</a>
-                                </div><br /><br />
-                                <div class="btn btn-primary">
-                                    <a style="color: #ffffff; float: right" href="view">View all Records</a>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
+                        <?php
+                            echo "<div class='table-responsive'>";
+                            echo "<table style='text-align:center;' class='table table-striped'>";
+                            echo "<tr class='active h3'>";
+                            echo "<td><b>Person Name</b></td>";
+                            echo "<td><b>Gender</b></td>";
+                            echo "<td><b>Date of Birth</b></td>";
+                            echo "</tr>";
+                            foreach ($missing_person_list as $list) {
+                                if ($list['gender'] === "M")
+                                    $gender = "Male";
+                                else if ($list['gender'] === "F")
+                                    $gender = "Female";
+                                else if ($list['gender'] === "O")
+                                    $gender = "Other";
+                                echo "<tr class='h4'>";
+                                echo "<td>".$list['fname']." ".$list['lname']."</td>";
+                                echo "<td>".$gender."</td>";
+                                echo "<td>".$list['dob']."</td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                            echo "</div>";
+                        ?>  
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <p class="text-muted" style="text-align: center">
-            Developed By Team Saathi <br/>
-            Powered By <a href="https://github.com/nisargjhaveri/saathi">Saathi</a>
-        </p>
-    </div>
-</footer>
 
 <!-- Toggle Script -->
 <script>
@@ -151,11 +146,7 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
-
-    $("#show").click(function(e) {
-        e.preventDefault();
-        $("#panelBody").toggle("display");
-        $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
-    });
-
 </script>
+
+</body>
+</html>
