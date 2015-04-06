@@ -10,16 +10,56 @@ class organisations extends Controller {
         $this->load_view('organisations/index');
     }
 
+    function validatePhone($phone) {
+        $regex = "/^((\+\d{0,3})?\d[\s-]?)?[\(\[\s-]{0,2}?\d{1,3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}$/i";
+
+        if( !preg_match( $regex, $phone)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    function valid() {
+        if(!empty($_POST['contact']['phone_no'])) {
+            if(!$this->validatePhone($_POST['contact']['phone_no'])) {
+                return false;
+            }
+        }
+
+        if(!empty($_POST['contact']['email'])) {
+            if (!filter_var($_POST['contact']['email'], FILTER_VALIDATE_EMAIL)) {
+                return false;
+            }
+        }
+
+        if(!empty($_POST['contact']['mailing_list'])) {
+           if (!filter_var($_POST['contact']['mailing_list'], FILTER_VALIDATE_EMAIL)) {
+                return false;
+            } 
+        }
+
+        if(!empty($_POST['org']['founded'])) {
+            if(($_POST['org']['founded'] < 0) or ($_POST['org']['founded'] > idate('Y'))) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     function create() {
         $created = null;
         $mode = "Create";
         $org_info = null;
 
         if (isset($_POST['submit'])) {
-            $created = $this->organisations_model->create_org(
-                $_POST['org'],
-                $_POST['contact']
-            );
+            if($this->valid()) {
+                $created = $this->organisations_model->create_org(
+                    $_POST['org'],
+                    $_POST['contact']
+                );
+            }
         }
 
         $this->load_view('organisations/create', array(
