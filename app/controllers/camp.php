@@ -29,13 +29,11 @@ class camp extends Controller {
                 $_POST['ch_email'],
                 $_POST['ch_mailing_list'],
                 $_POST['ch_mailing_address'],
-                $_POST['ch_gis_url'],
                 //contact details for camp
                 $_POST['phone_no'],
                 $_POST['email'],
                 $_POST['mailing_list'],
-                $_POST['mailing_address'],
-                $_POST['gis_url']
+                $_POST['mailing_address']
             );
         }
 

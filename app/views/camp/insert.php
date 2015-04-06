@@ -131,10 +131,10 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                         <b>Camp Details</b>
-                                        <div class="btn btn-info" id="show" style="float: right">Hide</div>
+                                        <div class="btn btn-info" id="show1" style="float: right">Hide</div>
                                     </div>
 
-                                    <div class="panel-body" id="panelBody">
+                                    <div class="panel-body" id="panelBody1">
                                         <label for="name">Camp Name </label>
                                         <input class="form-control" placeholder="Enter Camp Name" name='name' required/><br>
                                         <label for="organisation_id">Organisation </label>
@@ -154,9 +154,9 @@
                                 <div class="panel panel-primary">
                                     <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                         <b>Camp Head Details</b>
-                                        <div class="btn btn-info" id="show1" style="float: right">Hide</div>
+                                        <div class="btn btn-info" id="show2" style="float: right">Hide</div>
                                     </div>
-                                    <div class="panel-body" id="panelBody1">
+                                    <div class="panel-body" id="panelBody2">
                                         <label for="fname">First name </label>
                                         <input id="fname" type="text" class="form-control" name="fname" placeholder="Enter First Name" required /><br>
                                         <label for="lname">Last name </label>
@@ -180,17 +180,15 @@
                                         <input id="ch_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="ch_mailing_list" /><br>
                                         <label for="ch_mailing_address">Mailing address </label>
                                         <textarea id="ch_mailing_address" class="form-control" placeholder="Enter Mailing Address" name="ch_mailing_address" ></textarea><br>
-                                        <label for="ch_gis_url">GIS URL </label>
-                                        <input id="ch_gis_url" class="form-control" placeholder="Enter GIS URL - iframe tag" name="ch_gis_url" /><br>
                                     </div>
                                 </div>
                             <fieldset>
                                 <div class="panel panel-primary">
                                     <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                         <b>Contact Details for Camp</b>
-                                        <div class="btn btn-info" id="show4" style="float: right">Hide</div>
+                                        <div class="btn btn-info" id="show3" style="float: right">Hide</div>
                                     </div>
-                                    <div class="panel-body" id="panelBody4">
+                                    <div class="panel-body" id="panelBody3">
                                         <label for="phone_no">Phone number </label>
                                         <input id="phone_no" class="form-control" placeholder="Enter Phone Number" name="phone_no" required /><br>
                                         <label for="email">Email </label>
@@ -199,8 +197,6 @@
                                         <input id="mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="mailing_list" /><br>
                                         <label for="mailing_address">Mailing address </label>
                                         <textarea id="mailing_address" class="form-control" placeholder="Enter Mailing Address" name="mailing_address" ></textarea><br>
-                                        <label for="gis_url">GIS URL </label>
-                                        <input id="gis_url" class="form-control" placeholder="Enter GIS URL - iframe tag" name="gis_url" /><br>
                                     </div>
                                 </div>
                             </fieldset>
@@ -249,12 +245,6 @@
     $("#show3").click(function(e) {
         e.preventDefault();
         $("#panelBody3").toggle("display");
-        $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
-    });
-
-    $("#show4").click(function(e) {
-        e.preventDefault();
-        $("#panelBody4").toggle("display");
         $(this).text(($(this).text() == 'Hide') ? 'Show More' : 'Hide');
     });
 </script>
