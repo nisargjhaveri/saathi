@@ -112,5 +112,25 @@ class camp_model extends Model {
 
         return $this->DB->commit();
     }
+    function get_camps() {
+        $camp_list = false;
+        $camp_details = $this->DB->query(
+            'SELECT
+                c.*,
+                cd.*,
+                p.*,
+                c.id as c_id,
+                o.name as organisation_name
+            FROM
+                `camps` c
+                JOIN `contact_details` cd ON c.contact_id = cd.id
+                JOIN  `organisations` o ON c.organisation_id = o.id
+                JOIN `persons` p ON c.camp_head=p.id;
+            ');
+        if ($camp_details) {
+            $camp_list = $camp_details->fetch_all(MYSQLI_ASSOC);
+        }
+        return $camp_list;
+    }
 
 }
