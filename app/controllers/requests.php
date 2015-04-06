@@ -34,4 +34,31 @@ class requests extends Controller {
         ));
     }
 
+      function supply() {
+          $supplied = false;
+	  if (isset($_POST['supply'])){
+	      $supplied = $this->requests_model->supply(
+	          $_POST['supply_details']
+	      );
+      	  }
+	  $this->load_view('requests/supply', array(
+	      'supplied' => $supplied
+	      ));
+
+      }
+
+      function update()
+      {   
+          $updated = false;
+	  if (isset($_POST['update'])){
+              $updated = $this->requests_model->update(
+	          $_POST['update_details']
+	      );
+	  }
+	  $this->load_view('requests/update',array(
+	      'updated' => $updated
+	      ));
+
+      }
+
 }

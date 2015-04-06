@@ -66,45 +66,50 @@ class requests_model extends Model {
 
     function supply($supply_details){
         $this->DB->autocommit(false);
-	$supply_details['date'] = date("Y/m/d");
-	echo "this is the fucking date";
-	echo $supply_details['request_id'];
+        $supply_details['date'] = date("Y/m/d");
 	$supply_id = $this->execute(
-	    'UPDATE `requests` SET `supplier_id` = ?, `fulfill_date` = ? WHERE `id` = ?','isi',
+	    'Update requests SET supplier_id = ? , fulfill_date = ? where id = ?','isi',
 	    array(
-                &$supplier_details['supplier_id'],
-		&$supplier_details['date'],
-		&$supplier_details['request_id']
+                &$supply_details['supplier_id'],
+		&$supply_details['date'],
+		&$supply_details['request_id']
+		)
+	    );
+	if($supply_id)
+	{
+            $supply_id = $this->DB->affected_rows;
 
-        ));
-	if ($supply_id)
-	{
-		$supply_id = $this->DB->affected_rows;
 	}
-	else
+	else 
 	{
-		return false;
+            return false;
 	}
+	echo $this->DB->error;
 	return $supply_id;
 
     }
 
     function update($update_details){
         $this->DB->autocommit(false);
+	$result = print_r($update_details,true);
+	echo $result;
 	$update_id = $this->execute(
-	    'UPDATE `requests` SET `asset_id` = ? WHERE id = ?','ii',
+	    'UPDATE requests SET asset_id=? WHERE id=?','ii',
 	    array(
 	        &$update_details['asset_id'],
 		&$update_details['request_id']
-		 ));
+	    ));
+	echo "Here should be the values";
+	echo $update_details['asset_id'];
 	if($update_id)
 	{
-		$update_id = $this->DB->affected_rows;
+	    $update_id = $this->DB->affected_rows;
 	}
 	else
 	{
 		return false;
 	}
+	echo $this->DB->error;
 	return $update_id;
     }
 
