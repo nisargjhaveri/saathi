@@ -22,7 +22,7 @@ class missing_model extends Model {
         return $stmt;
     }
 
-    function report($person, $person_contact, $person_detail, $contact_whom) {
+    function report($person, $image, $person_contact, $person_detail, $contact_whom) {
         $this->DB->autocommit(false);
 
         $contact_id = $this->execute(
@@ -46,13 +46,14 @@ class missing_model extends Model {
         }
 
         $person_id = $this->execute(
-            'INSERT INTO `persons`(`fname`, `lname`, `gender`, `dob`, `contact_id`) VALUES (?, ?, ?, ?, ?)',
-            'ssssi',
+            'INSERT INTO `persons`(`fname`, `lname`, `gender`, `dob`, `photo`, `contact_id`) VALUES (?, ?, ?, ?, ?, ?)',
+            'sssssi',
             array(
                 &$person['fname'],
                 &$person['lname'],
                 &$person['gender'],
                 &$person['dob'],
+                &$image,
                 &$contact_id,
             )
         );
@@ -106,7 +107,9 @@ class missing_model extends Model {
     function search($person, $person_contact) {
         $search_results = $this->execute(
             'SELECT
-                *
+                *,
+                p.id as id,
+                IF(p.photo = "", "0", "1") as img
             FROM
                 `persons` p
                 JOIN `contact_details` c ON p.contact_id = c.id
@@ -134,6 +137,24 @@ class missing_model extends Model {
         }
 
         return $search_results->fetch_all(MYSQLI_ASSOC);
+    }
+
+    function get_img($id) {
+        $img_query = $this->execute(
+            'SELECT `photo` FROM `persons` WHERE `id` = ?',
+            'i',
+            array(
+                &$id
+            )
+        );
+        $img = $img_query->fetch_all(MYSQLI_ASSOC);
+        if (count($img)) {
+            $img = $img[0]['photo'];
+        }
+        else {
+            return false;
+        }
+        return $img;
     }
 
 }

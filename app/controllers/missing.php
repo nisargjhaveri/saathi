@@ -85,9 +85,19 @@ class missing extends Controller {
         $reported = null;
 
         if ( isset($_POST['report']) ) {
+
+            if (!empty($_FILES['person_image']) && !$_FILES['person_image']['error']
+                && $_FILES['person_image']['size'] && exif_imagetype($_FILES['person_image']['tmp_name'])) {
+                    $image = file_get_contents($_FILES['person_image']['tmp_name']);
+            }
+            else {
+                $image = '';
+            }
+
             if($this->valid()) {
                 $reported = $this->missing_model->report(
                     $_POST['person'],
+                    $image,
                     $_POST['person_contact'],
                     $_POST['person_detail'],
                     $_POST['contact_whom']
@@ -117,6 +127,27 @@ class missing extends Controller {
         else {
             $this->load_view('missing/search');
         }
+    }
+
+    function img($id) {
+        $img = $this->missing_model->get_img($id);
+        if (!$img) {
+            header('HTTP/1.0 404 Not Found');
+            exit();
+        }
+
+        $tmpfname = tempnam(sys_get_temp_dir(), "saathi_img");
+        $temp = fopen($tmpfname, "wb");
+        fwrite($temp, $img);
+        fclose($temp);
+
+        $ctype = exif_imagetype($tmpfname);
+        if ($ctype !== false) $ctype = image_type_to_mime_type($ctype);
+
+        unlink($tmpfname);
+
+        header('Content-type: ' . $ctype);
+        echo $img;
     }
 
 }

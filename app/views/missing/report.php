@@ -128,7 +128,7 @@
                         }
                         ?>
 
-                        <form action="" method="POST">
+                        <form action="" method="POST" enctype="multipart/form-data">
                             <fieldset>
                                 <div class="panel panel-primary">
                                     <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
@@ -151,6 +151,7 @@
                                                 <option class="dropdown-header" value="O">Other</option>
                                             </select><br>
                                         </div>
+                                        <input type="file" name="person_image" class="form-control" />
                                     </div>
                                 </div>
                             </fieldset>
