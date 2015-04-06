@@ -52,5 +52,17 @@ class camp extends Controller {
         ));
     }
 
+    function delete($camp_id = null) {
+        $camp_delete = false;
+
+        if ($camp_id !== null) {
+            $camp_delete = $this->camp_model->delete_asset($camp_id);
+        }
+        session_start();
+        $_SESSION['camp_delete'] = $camp_delete;
+
+        $this->load_library('http_lib', 'http');
+        $this->http->redirect(base_url().'camp/view/');
+    }
 
 }
