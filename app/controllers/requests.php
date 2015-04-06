@@ -47,4 +47,17 @@ class requests extends Controller {
         $this->http->redirect(base_url().'requests/view/');
     }
 
+    function supply() {
+          $supplied = false;
+	  if (isset($_POST['supply'])){
+	      $supplied = $this->requests_model->supply(
+	          $_POST['supply_details']
+	      );
+      	  }
+	  $this->load_library('http_lib', 'http');
+	  $this->http->redirect(base_url().'requests/view');
+
+      }
+
+
 }
