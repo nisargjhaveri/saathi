@@ -128,7 +128,7 @@
                         }
                         ?>
 
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="" method="POST" enctype="multipart/form-data" >
                             <fieldset>
                                 <div class="panel panel-primary">
                                     <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
@@ -136,22 +136,23 @@
                                         <div class="btn btn-info show" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body">
-                                        <label for="fname">First name </label>
+                                        <label for="fname">First name<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input id="fname" type="text" class="form-control" name="person[fname]" placeholder="Enter First Name" required /><br>
-                                        <label for="lname">Last name </label>
+                                        <label for="lname">Last name<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input type="text" class="form-control" placeholder="Enter Last Name" id="lname" name="person[lname]" required /><br>
                                         <label for="dob">Date of birth </label>
                                         <input type="text" placeholder="Enter your DOB (yyyy-mm-dd)" class="form-control" id="dob" name="person[dob]" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" /><br>
-                                        <label class="sr-only" for="gender">Gender: </label>
+                                        <label class="sr-only" for="gender">Gender<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>
-                                                <option class="dropdown-toggle" value="" disabled selected>Select gender</option>
+                                                <option class="dropdown-toggle" value="" disabled selected>Select gender<sup style="color: #FF0000; font-size: medium">*<sup></option>
                                                 <option class="dropdown-header" value="F">Female</option>
                                                 <option class="dropdown-header" value="M">Male</option>
                                                 <option class="dropdown-header" value="O">Other</option>
                                             </select><br>
                                         </div>
-                                        <input type="file" name="person_image" class="form-control" />
+                                        <label>Upload your Photo</label>
+                                        <input type="file" name="person_image" />
                                     </div>
                                 </div>
                             </fieldset>
@@ -200,9 +201,9 @@
                                         <div class="btn btn-info show" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body">
-                                        <label for="w_phone_no">Phone number </label>
+                                        <label for="w_phone_no">Phone number<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input id="w_phone_no" class="form-control" placeholder="Enter Phone Number" name="contact_whom[phone_no]" pattern="((\+\d{0,3})?\d[\s-]?)?[\(\[\s-]{0,2}?\d{1,3}[\)\]\s-]{0,2}?\d{3}[\s-]?\d{4}" required /><br>
-                                        <label for="w_email">Email </label>
+                                        <label for="w_email">Email<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input id="w_email" placeholder="Enter Email" class="form-control" type="email" name="contact_whom[email]" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" required /><br>
                                         <label for="w_mailing_list">Mailing list </label>
                                         <input id="w_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}" name="contact_whom[mailing_list]" /><br>
