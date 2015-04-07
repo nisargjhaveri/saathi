@@ -121,13 +121,13 @@
                                         <div class="btn btn-info" id="show1" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body" id="panelBody1">
-                                        <label for="fname">First name </label>
+                                        <label for="fname">First name<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input id="fname" type="text" class="form-control" name="person[fname]" placeholder="Enter the First Name" required /><br>
                                         <label for="lname">Last name </label>
                                         <input type="text" class="form-control" placeholder="Enter the Last Name" id="lname" name="person[lname]" /><br>
                                         <label for="dob">Date of birth </label>
                                         <input type="text" placeholder="Enter the DOB (yyyy-mm-dd)" class="form-control" id="dob" name="person[dob]" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" /><br>
-                                        <label class="sr-only" for="gender">Gender: </label>
+                                        <label class="sr-only" for="gender">Gender<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="person[gender]" required>
                                                 <option class="dropdown-toggle" value="" disabled selected>Select gender</option>

@@ -132,9 +132,9 @@
                                     </div>
 
                                     <div class="panel-body" id="panelBody">
-                                        <label for="name">Asset Name </label>
+                                        <label for="name">Asset Name<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input id="name" class="form-control" placeholder="Enter Asset Name" name='name' required/><br>
-                                        <label for="desc">Description </label>
+                                        <label for="desc">Description<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input id="desc" class="form-control" placeholder="Enter Description" name='description' /><br>
                                     </div>
                                 </div>

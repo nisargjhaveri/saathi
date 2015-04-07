@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<?php
+session_start();
+?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -114,7 +117,6 @@
                         </h1>
                     </div>
                         <?php
-                            session_start();
                             if ((isset($_SESSION['request_delete'])) && ($_SESSION['request_delete'] === true)) {
                                 echo "<div class='alert alert-success'>Request Successfully Deleted</div>";
                                 echo "<br />";
@@ -179,11 +181,12 @@
                         </fieldset>
                         <div class="col-sm-8 col-md-4">
                         </div>
-                        <div class="col-sm-8 col-md-4" style="padding-top: 12px;">
+                        <div class="col-sm-8 col-md-4" style="padding-top: 25px">
                             <input class="btn btn-block btn-success" type="submit" name="supply" value="Supply the Request" />
                         </div>
                     </form>
                 </div>
+                <div class="modal-footer"></div>
             </div>
         </div>
     </div>

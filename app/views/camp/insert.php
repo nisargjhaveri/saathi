@@ -137,16 +137,16 @@
                                     </div>
 
                                     <div class="panel-body" id="panelBody1">
-                                        <label for="name">Camp Name </label>
+                                        <label for="name">Camp Name<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input class="form-control" placeholder="Enter Camp Name" name='name' required/><br>
-                                        <label for="organisation_id">Organisation </label>
+                                        <label for="organisation_id">Organisation<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input class="hidden" name='organisation_id' id='organisation_id' required/><br>
                                         <input class="form-control" placeholder="Select Organisation" name='organisation' id='organisation'/><br><br>
-                                        <label for="population">Population: </label>
+                                        <label for="population">Population<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input class="form-control" placeholder="Enter population" type="text" name="population" required/><br>
-                                        <label for="volunteers">Volunteers: </label>
+                                        <label for="volunteers">Volunteers<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input class="form-control" type="text" placeholder="Enter volunteers" name="volunteers" required/><br>
-                                        <label for="status">Status: </label>
+                                        <label for="status">Status<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input class="form-control" type="text" placeholder="Enter status" name="status" required/><br>
                                     </div>
                                 </div>
@@ -159,13 +159,13 @@
                                         <div class="btn btn-info" id="show2" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body" id="panelBody2">
-                                        <label for="fname">First name </label>
+                                        <label for="fname">First name<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input id="fname" type="text" class="form-control" name="fname" placeholder="Enter First Name" required /><br>
-                                        <label for="lname">Last name </label>
+                                        <label for="lname">Last name<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input type="text" class="form-control" placeholder="Enter Last Name" id="lname" name="lname" required /><br>
                                         <label for="dob">Date of birth </label>
                                         <input type="date" placeholder="Enter your DOB" class="form-control" id="dob" type="date" name="dob" /><br>
-                                        <label class="sr-only" for="gender">Gender: </label>
+                                        <label class="sr-only" for="gender">Gender<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <div class="dropdown">
                                             <select class="dropdown-header" id="gender" name="gender" required>
                                                 <option class="dropdown-toggle" value="" disabled selected>Select gender</option>
@@ -174,9 +174,9 @@
                                                 <option class="dropdown-header" value="O">Other</option>
                                             </select><br>
                                         </div>
-                                        <label for="ch_phone_no">Phone number </label>
+                                        <label for="ch_phone_no">Phone number<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input id="ch_phone_no" class="form-control" placeholder="Enter Phone Number" name="ch_phone_no" required /><br>
-                                        <label for="ch_email">Email </label>
+                                        <label for="ch_email">Email<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input id="ch_email" placeholder="Enter Email" class="form-control" type="email" name="ch_email" required /><br>
                                         <label for="ch_mailing_list">Mailing list </label>
                                         <input id="ch_mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="ch_mailing_list" /><br>
@@ -191,9 +191,9 @@
                                         <div class="btn btn-info" id="show3" style="float: right">Hide</div>
                                     </div>
                                     <div class="panel-body" id="panelBody3">
-                                        <label for="phone_no">Phone number </label>
+                                        <label for="phone_no">Phone number<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input id="phone_no" class="form-control" placeholder="Enter Phone Number" name="phone_no" required /><br>
-                                        <label for="email">Email </label>
+                                        <label for="email">Email<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <input id="email" placeholder="Enter Email" class="form-control" type="email" name="email" required /><br>
                                         <label for="mailing_list">Mailing list </label>
                                         <input id="mailing_list" class="form-control" placeholder="Enter Mailing List" type="email" name="mailing_list" /><br>

@@ -133,16 +133,16 @@
                                     <div class="btn btn-info show" style="float: right">Hide</div>
                                 </div>
                                 <div class="panel-body">
-                                    <label for="organisation"><b>Organisation Name </b></label>
+                                    <label for="organisation"><b>Organisation Name<sup style="color: #FF0000; font-size: medium">*<sup> </b></label>
                                     <input class="hidden" id="organisation_id" name="details[organisation_id]" required />
                                     <input class="form-control" placeholder="Enter Organisation Name" id="organisation" name="organisation" required />
                                     <br><br/>
-                                    <label for="asset"><b>Asset: </b></label>
+                                    <label for="asset"><b>Asset<sup style="color: #FF0000; font-size: medium">*<sup> </b></label>
                                     <input class="hidden" id="asset_id" name="details[asset_id]" required />
                                     <input class="form-control" placeholder="Enter Asset Name" id="asset" name="asset" required />
                                     <br>
                                     <br />
-                                    <label for="priority"><b>Priority: </b></label>
+                                    <label for="priority"><b>Priority<sup style="color: #FF0000; font-size: medium">*<sup> </b></label>
                                     <input class="form-control" placeholder="Enter Priority" id="priority" name="details[priority]" required /><br>
                                 </div>
                         </fieldset>
