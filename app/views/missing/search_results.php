@@ -146,6 +146,7 @@
                             echo "<li class='list-group-item'><b> Body Marks: </b>" . $person['body_marks'] . '</li>';
                             echo "<li class='list-group-item'><b> Height: </b>" . $person['height'] . '</li>';
                             echo "<li class='list-group-item'><b> Weight: </b>" . $person['weight'] . '</li>';
+                            echo "<li class='list-group-item'><b> Blood Group: </b>" . $person['blood_group'] . '</li>';
                             echo "<li class='list-group-item'><b> Hair Color/Style: </b>" . $person['hair'] . '</li>';
                             echo "<li class='list-group-item'><b> Eye-Color: </b>" . $person['eye_color'] . '</li>';
                             echo "<li class='list-group-item'><b> Last Seen Location: </b>" . $person['last_seen'] . '</li>';
