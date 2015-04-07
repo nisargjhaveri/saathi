@@ -189,6 +189,8 @@
                                         <input id="hair" placeholder="Enter Hair Style/Color" class="form-control" name="person_detail[hair]" /><br>
                                         <label for="eye_color">Eye color </label>
                                         <input id="eye_color" class="form-control" placeholder="Enter Eye color" name="person_detail[eye_color]" /><br>
+                                        <label for="blood_group">Blood Group </label>
+                                        <input id="blood_group" class="form-control" placeholder="Enter Blood Group" name="person_detail[blood_group]" pattern="(A|B|AB|O)(\+|-)" /><br>
                                         <label for="last_seen">Last seen (When, where, condition) </label><br>
                                         <textarea id="last_seen" placeholder="Enter Last Seen Location" class="form-control" name="person_detail[last_seen]"></textarea><br>
                                     </div>

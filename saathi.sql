@@ -82,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `missing_persons` (
   `hair` varchar(255) NOT NULL,
   `eye_color` varchar(255) NOT NULL,
   `weight` varchar(255) NOT NULL,
+  `blood_group` varchar(255) NOT NULL,
   `last_seen` text NOT NULL,
   `status` text NOT NULL,
   `contact_id` int(11) NOT NULL,
