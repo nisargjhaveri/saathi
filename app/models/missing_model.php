@@ -108,7 +108,9 @@ class missing_model extends Model {
         $missing_person_list = false;
         $missing_person_details = $this->DB->query(
             'SELECT
-                *
+                *,
+                p.id as id,
+                IF(p.photo = "", "0", "1") as img
              FROM
                 `missing_persons` m
                 JOIN `persons` p ON m.person_id = p.id
