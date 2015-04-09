@@ -17,6 +17,7 @@ function initialize() {
             draggable: false,
             position: myLatlng,
             map: map,
+            animation: google.maps.Animation.BOUNCE,
             title: $infotext.children('.my-address').text()
         });
 
@@ -40,6 +41,7 @@ function initializeView() {
         draggable: true,
         position: myLatlng,
         map: map,
+        animation: google.maps.Animation.BOUNCE,
         title: document.getElementById("my-address").value
     });
 
