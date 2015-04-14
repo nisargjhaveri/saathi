@@ -1,45 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.3.12
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Apr 07, 2015 at 11:39 AM
--- Server version: 5.5.41-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.7
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Database: `saathi`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `contact_details`
---
-
-CREATE TABLE IF NOT EXISTS `contact_details` (
-  `id` int(11) NOT NULL,
-  `phone_no` varchar(15) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `mailing_list` varchar(255) NOT NULL,
-  `mailing_address` varchar(255) NOT NULL,
-  `longitude` decimal(11,8) DEFAULT '0.00000000',
-  `latitude` decimal(10,8) DEFAULT '0.00000000'
-) ENGINE=InnoDB AUTO_INCREMENT=120 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `contact_details`
---
-
 INSERT INTO `contact_details` (`id`, `phone_no`, `email`, `mailing_list`, `mailing_address`, `longitude`, `latitude`) VALUES
 (1, '+418059644767', '', '', 'Gachibowli, Hyderabad, Telangana, India', '78.34891680', '17.44008020'),
 (2, '131312313', 'a@a.com', '', '', '0.00000000', '0.00000000'),
@@ -160,26 +118,3 @@ INSERT INTO `contact_details` (`id`, `phone_no`, `email`, `mailing_list`, `maili
 (117, '', '', '', ' 45 Kusum Marg,  DLF, 1Gurgaon HR, 122002', '77.10346550', '28.47584360'),
 (118, '', '', '', 'Indo-Global Social Service Society   28, Institutional Area, Lodhi Road,   New Delhi-110003  ', '77.22758230', '28.58849330'),
 (119, '', '', '', 'Viswas Bhavan, Kundukulam Road, Mannuthy P.O Thrissur Kerala 680651 India', '76.26239450', '10.55019850');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `contact_details`
---
-ALTER TABLE `contact_details`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `contact_details`
---
-ALTER TABLE `contact_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=120;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
