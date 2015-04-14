@@ -21,6 +21,19 @@ class auth_model extends Model {
         return $stmt;
     }
 
+    function add_user($username, $password_hash, $role) {
+        $success = $this->execute(
+            'INSERT INTO `users` (`username`, `password`, `role`) VALUES (?, ?, ?)',
+            'sss',
+            array(
+                &$username,
+                &$password_hash,
+                &$role
+            )
+        );
+        return $success ? true : false;
+    }
+
     function get_user($username, $password_hash) {
         $user = $this->execute(
             'SELECT * FROM `users` WHERE `username` = ? AND `password` = ?',
