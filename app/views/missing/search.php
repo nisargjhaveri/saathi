@@ -129,7 +129,7 @@
                                         <input type="text" placeholder="Enter the DOB (yyyy-mm-dd)" class="form-control" id="dob" name="person[dob]" pattern="[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|3[01])" /><br>
                                         <label class="sr-only" for="gender">Gender<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <div class="dropdown">
-                                            <select class="dropdown-header" id="gender" name="person[gender]" required>
+                                            <select class="dropdown-header col-lg-12" id="gender" name="person[gender]" required>
                                                 <option class="dropdown-toggle" value="" disabled selected>Select gender</option>
                                                 <option class="dropdown-header" value="F">Female</option>
                                                 <option class="dropdown-header" value="M">Male</option>

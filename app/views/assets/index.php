@@ -119,10 +119,10 @@
 
                             <div class="panel-body" id="panelBody">
                                 <div class="btn btn-primary">
-                                    <a style="color: #ffffff" href="insert">Add an asset</a>
+                                    <a style="color: #ffffff" href="<?php echo base_url(); ?>assets/insert">Add an asset</a>
                                 </div><br /><br />
                                 <div class="btn btn-primary">
-                                    <a style="color: #ffffff" href="view">View Available Assets</a>
+                                    <a style="color: #ffffff" href="<?php echo base_url(); ?>assets/view">View Available Assets</a>
                                 </div>
                             </div>
                         </div>
