@@ -167,7 +167,7 @@
                                         <input type="date" placeholder="Enter your DOB" class="form-control" id="dob" type="date" name="dob" /><br>
                                         <label class="sr-only" for="gender">Gender<sup style="color: #FF0000; font-size: medium">*<sup> </label>
                                         <div class="dropdown">
-                                            <select class="dropdown-header" id="gender" name="gender" required>
+                                            <select class="dropdown-header col-lg-12" id="gender" name="gender" required>
                                                 <option class="dropdown-toggle" value="" disabled selected>Select gender</option>
                                                 <option class="dropdown-header" value="F">Female</option>
                                                 <option class="dropdown-header" value="M">Male</option>

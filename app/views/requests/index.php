@@ -120,10 +120,10 @@
 
                         <div class="panel-body" id="panelBody">
                             <div class="btn btn-primary">
-                                <a style="color: #ffffff" href="add">Request for an asset</a>
+                                <a style="color: #ffffff" href="<?php echo base_url(); ?>requests/add">Request for an asset</a>
                             </div><br /><br />
                             <div class="btn btn-primary">
-                                <a style="color: #ffffff" href="view">View Requests</a>
+                                <a style="color: #ffffff" href="<?php echo base_url(); ?>requests/view">View Requests</a>
                             </div>
                         </div>
                     </div>
