@@ -116,16 +116,28 @@
                         <div class="panel panel-primary">
                             <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                 <b>Want to create a new Camp?</b>
-                                <div class="btn btn-info" id="show" style="float: right;"><a href="insert" style=" color: #ffffff">Create</a></div>
+                                <div class="btn btn-info" id="show" style="float: right;"><a href="<?php echo base_url(); ?>camp/insert" style=" color: #ffffff">Create</a></div>
                             </div>
                         </div>
 
                         <div class="panel panel-primary">
                             <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
                                 <b>Want to see all the Camps?</b>
-                                <div class="btn btn-info" id="show" style="float: right;"><a href="view" style=" color: #ffffff">View all the camps</a></div>
+                                <div class="btn btn-info" id="show" style="float: right;">
+                                    <a href="<?php echo base_url(); ?>camp/view" style=" color: #ffffff">View all the camp details</a>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" style="font-size: large; padding-bottom: 15px">
+                                <b>Locate all the camps</b>
+                                <div class="btn btn-info" id="show" style="float: right;">
+                                    <a href="<?php echo base_url(); ?>camp/view_map" style=" color: #ffffff">View all the camp locations</a>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

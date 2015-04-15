@@ -54,6 +54,16 @@ class camp extends Controller {
         ));
     }
 
+    function view_map() {
+
+        $camp_list = false;
+        $camp_list = $this->camp_model->get_camps();
+
+        $this->load_view('camp/view_map', array(
+            'camp_list' => $camp_list
+        ));
+    }
+
     function delete($camp_id = null) {
         $camp_delete = false;
 
