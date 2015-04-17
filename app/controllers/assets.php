@@ -1,6 +1,11 @@
 <?php
 class assets extends Controller {
     function __construct() {
+        $this->load_library('deployment_settings', 'settings');
+        if (!$this->settings->request_asset()) {
+            $this->load_library('http_lib', 'http');
+            $this->http->err_404();
+        }
         $this->load_model('assets_model');
     }
 
