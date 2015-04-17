@@ -3,6 +3,11 @@
 class missing extends Controller {
 
     function __construct() {
+        $this->load_library('deployment_settings', 'settings');
+        if (!$this->settings->missing_person()) {
+            $this->load_library('http_lib', 'http');
+            $this->http->err_404();
+        }
         $this->load_model('missing_model');
     }
 
