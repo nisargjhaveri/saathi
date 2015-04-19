@@ -30,4 +30,35 @@ class sample extends Controller {
         ));
     }
 
+    function sample_send_mail() {
+        $success = null;
+        $error = null;
+        $this->load_library('mailer','mailer');
+        if (isset($_POST['submit'])) {
+    	    $mail = $this->mailer->getMail();
+    	    if($mail->Username == "")
+    	    { 
+    	    	$error = "Mail id not filled in Config File. Kindly fill email id in config file to send emails";
+                $success = False;
+    	    }
+    	    else if($mail->Password == "")
+    	    {
+    	    	$error = "Password not filled in Config File. Kindly fill password in config file to send emails";
+                $success = False;
+    	    }
+    	    else
+    	    {
+    	    	$mail->AddAddress($_POST['email']);
+            	$mail->Subject = $_POST['subject'];
+    	    	$mail->Body = $_POST['body'];
+    	    	$mail->AltBody = $_POST['body'];
+    	    	$success = $mail->Send();
+            	//$error = $mail->ErrorInfo;
+    	    }
+        }
+	    $this->load_view('sample_send_mail', array(
+            'success' => $success
+            //'error' => $error
+        ));
+    }
 }
