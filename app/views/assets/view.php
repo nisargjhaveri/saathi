@@ -76,10 +76,18 @@ $this->load_fragment('navbar');
                     <div class='panel panel-primary'>
                         <div class='panel-heading' style='font-size: large; padding-bottom: 15px'>
                             <b>Asset Name: <?php echo $assets['name']; ?> </b>
+
                             <?php
                                 echo "<button class='btn btn-danger' style='float: right;' data-toggle='modal' data-target='#myModal' onclick='send_request(\"".$assets['name']."\", ".$assets['id'].")'> Delete </button>";
                             ?>
-                            <div class='btn btn-info show' style='float: right; margin-right: 4px;'>Show More</div>
+
+                            <a href="update?id=<?php echo $assets['id'] ?>">
+
+                                <div class='btn btn-success update' style='float: right;margin-right: 8px;'>Update</div>
+                            </a>
+
+                            <div class='btn btn-info show' style='float: right;margin-right: 8px;'>Show More</div>
+
                         </div>
                         <div class='panel-body' id='panelBody1' style='display: none;'>
                             <b>Description: </b> <?php echo $assets['description']; ?>
