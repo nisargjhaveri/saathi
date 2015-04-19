@@ -84,26 +84,67 @@ class requests_model extends Model {
     }
 
     function supply($supply_details){
+    
 	$supply_details['date'] = date("y/m/d");
 	$supply_id = $this->execute(
 	    'UPDATE `requests` SET `supplier_id` = ?, `fulfill_date` = ? WHERE `id` = ?',
 	    'isi',
 	    array(
-                &$supply_details['supplier_id'],
-		&$supply_details['date'],
-		&$supply_details['request_id'],
+            &$supply_details['supplier_id'],
+            &$supply_details['date'],
+            &$supply_details['request_id'],
 		)
 
         );
-	if ($supply_id)
-	{
-		$supply_id = $this->DB->affected_rows;
-	}
-	else
-	{
-		return false;
-	}
-	return $supply_id;
+    	if ($supply_id)
+    	{
+    		$supply_id = $this->DB->affected_rows;
+    	}
+    	else
+    	{
+    		return false;
+    	}
+
+	   return $supply_id;
+       
+    }
+
+    function get_asset_name($request_id) {
+        $asset_name = $this->DB->query(
+            'SELECT
+                name
+            FROM
+                assets
+            WHERE id = '.$request_id.' 
+            ');
+        return $asset_name->fetch_all(MYSQLI_ASSOC)[0]['name'];
+    }
+
+    function get_organisation_id($request_id){
+        $request_id = $this->DB->query(
+            'SELECT
+                organisation_id
+            FROM
+                requests
+            WHERE id = '.$request_id.' 
+            ');
+        return $request_id->fetch_all(MYSQLI_ASSOC)[0]['organisation_id'];
+    }
+
+    function get_contact_details($organisation_id){
+        $request_details = $this->DB->query(
+            'SELECT
+                org.name, contact_details.email, contact_details.phone_no
+            FROM
+                organisations AS org
+                JOIN contact_details
+                 ON org.contact_id = contact_details.id
+            WHERE org.id = ' . $organisation_id .'
+            ');
+        if ($request_details) {
+            $request_details = $request_details->fetch_all(MYSQLI_ASSOC);
+        }
+        return $request_details[0];
     }
 
 }
