@@ -181,4 +181,39 @@ class missing extends Controller {
         echo $img;
     }
 
+    function pdf() {
+        // TODO: Add Image in PDF
+        $missing_person_list = false;
+        $missing_person_list = $this->missing_model->get_missing();
+        if(($missing_person_list === false)) {
+            echo "HELLO";
+            exit;
+        }
+        $this->load_library('html2pdf_lib', 'html2pdf_lib');
+        $this->content = "<page>";
+        $this->content = $this->content . "<h1 style='text-align:center;'>Saathi</h1>";
+        $this->content = $this->content . "<h2 style='text-align:center;'>List of Missing Persons</h2>";
+        $this->content = $this->content . "<br><div>";
+        $this->content = $this->content . "<table style='width:100%;border: 1px solid #000000;'><tr>";
+        $this->content = $this->content . "<th style='width:40%;text-align:center; text-decoration:underline;'>Person Name</th>";
+        $this->content = $this->content . "<th style='width:25%;text-align:center; text-decoration:underline;'>Gender</th>";
+        $this->content = $this->content . "<th style='width:35%;text-align:center; text-decoration:underline;'>Date of Birth</th></tr>";
+        foreach($missing_person_list as $list) {
+            if ($list['gender'] === "M")
+                $gender = "Male";
+            else if ($list['gender'] === "F")
+                $gender = "Female";
+            else if ($list['gender'] === "O")
+                $gender = "Other";
+            $this->content = $this->content . "<tr><td style='width:40%;text-align:center;'>" . $list['fname'] . " " . $list['lname'] . "</td>";
+            $this->content = $this->content . "<td style='width:25%;text-align:center;'> " . $gender . " </td>";
+            $this->content = $this->content . "<td style='width:35%;text-align:center;'>" . $list['dob'] . "</td></tr>";
+        }
+        $this->content = $this->content . "</table></div>";
+        $this->content = $this->content . "</page>";
+        $this->html2pdf = $this->html2pdf_lib->getobject();
+        $this->html2pdf->WriteHTML($this->content);
+        $this->html2pdf->Output("missing_person.pdf");
+    }
+
 }

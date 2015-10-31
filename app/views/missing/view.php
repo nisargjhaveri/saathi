@@ -69,30 +69,35 @@ $this->load_fragment('navbar');
                         </h1>
                     </div>
                         <?php
-                            echo "<div class='table-responsive'>";
-                            echo "<table style='text-align:center;' class='table table-striped missing-list'>";
-                            echo "<tr class='active h3'>";
-                            echo "<th>Photo</th>";
-                            echo "<th>Person Name</th>";
-                            echo "<th>Gender</th>";
-                            echo "<th>Date of Birth</th>";
-                            echo "</tr>";
-                            foreach ($missing_person_list as $list) {
-                                if ($list['gender'] === "M")
-                                    $gender = "Male";
-                                else if ($list['gender'] === "F")
-                                    $gender = "Female";
-                                else if ($list['gender'] === "O")
-                                    $gender = "Other";
-                                echo "<tr class='h4'>";
-                                echo "<td>".($list['img'] ? "<img class='person-img' src='" . base_url() . "missing/img/" . $list['id'] . "' />" : '')."</td>";
-                                echo "<td>".$list['fname']." ".$list['lname']."</td>";
-                                echo "<td>".$gender."</td>";
-                                echo "<td>".$list['dob']."</td>";
+                            if($missing_person_list === false) {
+                                echo "<h2><center><u>No Missing Persons Reported</u></center></h2>";
+                            } else {
+                                echo "<h5 style='text-align:right;'>Download as PDF <a href='". base_url() ."missing/pdf'><img src='". base_url() ."static/img/pdf_image.png' height='25px' width='25px'></a></h5>";
+                                echo "<div class='table-responsive'>";
+                                echo "<table style='text-align:center;' class='table table-striped missing-list'>";
+                                echo "<tr class='active h3'>";
+                                echo "<th style='text-align:center;'>Photo</th>";
+                                echo "<th style='text-align:center;'>Person Name</th>";
+                                echo "<th style='text-align:center;'>Gender</th>";
+                                echo "<th style='text-align:center;'>Date of Birth</th>";
                                 echo "</tr>";
+                                foreach ($missing_person_list as $list) {
+                                    if ($list['gender'] === "M")
+                                        $gender = "Male";
+                                    else if ($list['gender'] === "F")
+                                        $gender = "Female";
+                                    else if ($list['gender'] === "O")
+                                        $gender = "Other";
+                                    echo "<tr class='h4'>";
+                                    echo "<td>".($list['img'] ? "<img class='person-img' src='" . base_url() . "missing/img/" . $list['id'] . "' />" : '')."</td>";
+                                    echo "<td>".$list['fname']." ".$list['lname']."</td>";
+                                    echo "<td>".$gender."</td>";
+                                    echo "<td>".$list['dob']."</td>";
+                                    echo "</tr>";
+                                }
+                                echo "</table>";
+                                echo "</div>";
                             }
-                            echo "</table>";
-                            echo "</div>";
                         ?>
                 </div>
             </div>
