@@ -49,6 +49,8 @@ class organisations extends Controller {
     }
 
     function create() {
+        $this->load_library('auth_lib');
+        $this->auth_lib->require_role('admin');
         $created = null;
         $mode = "Create";
         $org_info = null;
