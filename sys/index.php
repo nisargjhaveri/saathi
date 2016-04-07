@@ -1,7 +1,23 @@
 <?php
 error_reporting(E_ALL);
 
-require('app/config.php');
+$config_file = 'app/config.php';
+if (file_exists($config_file) && is_readable($config_file)) {
+    require($config_file);
+}
+else {
+    $need_config = 'app/views/need_config.php';
+    if (file_exists($need_config) && is_readable($need_config)) {
+        include($need_config);
+    }
+    else {
+        echo "The application is misconfigured.";
+    }
+    exit();
+}
+
+if (!defined('SYSPATH')) define('SYSPATH', realpath(dirname(__FILE__)) . '/');
+if (!defined('APPPATH')) define('APPPATH', realpath(dirname(__FILE__) . '/../app') . '/');
 
 /**
  * Set unset configs
